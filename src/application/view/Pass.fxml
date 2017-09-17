@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+    <URL value="@../application.css" />
+  </stylesheets>
+   <children>
+      <AnchorPane cache="true" layoutX="109.0" layoutY="-56.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="101.0" fitWidth="83.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Kliponious-green-tick.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="221.0" layoutY="250.0" mnemonicParsing="false" text="Next Number " />
+            <Button layoutX="15.0" layoutY="360.0" mnemonicParsing="false" text="Quit" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

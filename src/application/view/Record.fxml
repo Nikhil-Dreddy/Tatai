@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
+   <children>
+      <Button layoutX="241.0" layoutY="264.0" mnemonicParsing="false" onAction="#setNumLabel" prefHeight="41.0" prefWidth="119.0" text="Record">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="numLabel" alignment="CENTER" layoutX="210.0" layoutY="81.0" prefHeight="155.0" prefWidth="181.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="96.0" />
+         </font></Label>
+      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="questionLabel" layoutX="14.0" layoutY="14.0" text="  /10" />
+   </children>
+</AnchorPane>
