@@ -53,7 +53,7 @@ public class RecordController implements Initializable{
 	}
 	
 	public void Record(ActionEvent event) throws IOException{
-		
+		speech.setEvent(event);
 		new Thread(speech).start();
 	}
 	

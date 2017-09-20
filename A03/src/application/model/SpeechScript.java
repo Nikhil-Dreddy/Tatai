@@ -8,14 +8,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import application.Main;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class SpeechScript extends Task<Void> {
 	private int num;
+	private Numbers maoriWord;
 	private ArrayList<String> words;
+	private ActionEvent event;
 	public SpeechScript(int number) {
 		this.num =number;
 		words = new ArrayList<>();
+		this.numbertoMaori();
 	}
 	@Override
 	protected Void call() throws Exception {
@@ -106,7 +116,32 @@ public class SpeechScript extends Task<Void> {
 	@Override
 	protected void succeeded() {
 		super.succeeded();
-		
+		if(words.get(0).equals(maoriWord.toString())) {
+			Parent menuViewParent;
+			try {
+				menuViewParent = FXMLLoader.load(Main.class.getResource("view/Pass.fxml"));
+				Scene menuViewScene = new Scene(menuViewParent);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.setScene(menuViewScene);
+				stage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			Parent menuViewParent;
+			try {
+				menuViewParent = FXMLLoader.load(Main.class.getResource("view/Wrong.fxml"));
+				Scene menuViewScene = new Scene(menuViewParent);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.setScene(menuViewScene);
+				stage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 
@@ -116,7 +151,40 @@ public class SpeechScript extends Task<Void> {
 	updateMessage("Cancelled!");
 	
 	}
-
+	
+	protected void numbertoMaori() {
+		if(num == 1) {
+			maoriWord = Numbers.tahi;
+		}
+		else if(num == 2) {
+			maoriWord = Numbers.rua;
+		}
+		else if(num == 3) {
+			maoriWord = Numbers.toru;
+		}
+		else if(num == 4) {
+			maoriWord = Numbers.wha;
+		}
+		else if(num == 5) {
+			maoriWord = Numbers.rima;
+		}
+		else if(num == 6) {
+			maoriWord = Numbers.ono;
+		}
+		else if(num == 7) {
+			maoriWord = Numbers.whitu;
+		}
+		else if(num == 8) {
+			maoriWord = Numbers.waru;
+		}
+		else if(num == 9) {
+			maoriWord = Numbers.iwa;
+		}
+		
+	}
+	public void setEvent(ActionEvent event2) {
+		event = event2;
+	}
 	@Override 
 	protected void failed() {
 	super.failed();
