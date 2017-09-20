@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
+import application.model.SpeechScript;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ public class RecordController implements Initializable{
 	
 	private static int score;
 	private static int mistakes;
-	
+	private SpeechScript speech;
 	
 	@FXML
 	private Label numLabel;
@@ -34,6 +35,7 @@ public class RecordController implements Initializable{
 		numberGenerator.generateNum();
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
 		questionNo++;
+		speech = new SpeechScript(numberGenerator.getNum());
 		if(questionNo == 10 ){
 			questionNo = 0;
 			
@@ -48,6 +50,11 @@ public class RecordController implements Initializable{
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(menuViewScene);
 		stage.show();
+	}
+	
+	public void Record(ActionEvent event) throws IOException{
+		
+		new Thread(speech).start();
 	}
 	
 	

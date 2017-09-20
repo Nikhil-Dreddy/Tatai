@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
    <children>
-      <Button layoutX="241.0" layoutY="264.0" mnemonicParsing="false" onAction="#setNumLabel" prefHeight="41.0" prefWidth="119.0" text="Record">
+      <Button layoutX="241.0" layoutY="264.0" mnemonicParsing="false" onAction="#Record" prefHeight="41.0" prefWidth="119.0" text="Record">
          <font>
             <Font size="24.0" />
          </font>
