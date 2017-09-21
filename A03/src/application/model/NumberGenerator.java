@@ -27,6 +27,52 @@ public class NumberGenerator {
 		}
 	}
 	
+	public String digitToMaori(int i){
+		if(i == 1){
+			return "Tahi";
+		}
+		if(i == 2){
+			return "Rua";
+		}
+		if(i == 3){
+			return "Toru";
+		}
+		if(i == 4){
+			return "Wha";
+		}
+		if(i == 5){
+			return "Rima";
+		}
+		if(i == 6){
+			return "Ono";
+		}
+		if(i == 7){
+			return "Whitu";
+		}
+		if(i == 8){
+			return "Waru";
+		}
+		if(i == 9){
+			return "Iwa";
+		}
+		return "";
+	}
+	
+	public String getMaoriNum(){
+		int secondDigit = num % 10;
+		int firstDigit = (num/10) % 10;
+		
+		if (firstDigit == 0){
+			return digitToMaori(secondDigit);
+		} else if (firstDigit == 1){
+			return "Tekau Ma "+digitToMaori(secondDigit);
+		} else if(secondDigit == 0){
+			return digitToMaori(firstDigit)+" Tekau";
+		} else {
+			return digitToMaori(firstDigit)+" Tekau Ma "+digitToMaori(secondDigit);
+		}
+	}
+	
 	public int getNum(){
 		return num;
 	};

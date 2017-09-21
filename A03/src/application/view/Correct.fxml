@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CorrectController">
    <children>
       <VBox alignment="CENTER" layoutX="211.0" layoutY="119.0" prefHeight="163.0" prefWidth="178.0">
          <children>
@@ -15,13 +15,13 @@
                   <Font size="48.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" text="Next Number">
+            <Button mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Number">
                <font>
                   <Font size="21.0" />
                </font></Button>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Quit">
+      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
          <font>
             <Font size="18.0" />
          </font>
