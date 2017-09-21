@@ -22,10 +22,16 @@ public class SpeechScript extends Task<Void> {
 	private Numbers maoriWord;
 	private ArrayList<String> words;
 	private ActionEvent event;
-	public SpeechScript(int number) {
+	int score;
+	int qNo;
+	private static Status status = Status.Pass ;
+	public SpeechScript(int number,int score,int qNo) {
 		this.num =number;
 		words = new ArrayList<>();
 		this.numbertoMaori();
+		this.score = score;
+		this.qNo = qNo;
+
 	}
 	@Override
 	protected Void call() throws Exception {
@@ -50,8 +56,8 @@ public class SpeechScript extends Task<Void> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		ProcessBuilder pb2 = new ProcessBuilder("bash", "-c", "HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  -w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  user/dictionaryD user/tiedList foo.wav")
+
+		ProcessBuilder pb2 = new ProcessBuilder("bash", "-c","HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR  -w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0  user/dictionaryD user/tiedList foo.wav")
 				.redirectErrorStream(true);
 		pb2.directory(new File("HTK/MaoriNumbers"));
 		try {			
@@ -72,7 +78,7 @@ public class SpeechScript extends Task<Void> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
 				.redirectErrorStream(true);
 		pb3.directory(new File("HTK/MaoriNumbers"));
@@ -109,10 +115,10 @@ public class SpeechScript extends Task<Void> {
 			}
 		}
 
-		
+
 		return null;
 	}
-	
+
 	@Override
 	protected void succeeded() {
 		super.succeeded();
@@ -124,6 +130,9 @@ public class SpeechScript extends Task<Void> {
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				stage.setScene(menuViewScene);
 				stage.show();
+				score++;
+				qNo++;
+				status = Status.Pass;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,15 +140,33 @@ public class SpeechScript extends Task<Void> {
 		}
 		else {
 			Parent menuViewParent;
-			try {
-				menuViewParent = FXMLLoader.load(Main.class.getResource("view/Wrong.fxml"));
-				Scene menuViewScene = new Scene(menuViewParent);
-				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				stage.setScene(menuViewScene);
-				stage.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(status == Status.Try_Again) {
+				try {
+					menuViewParent = FXMLLoader.load(Main.class.getResource("view/WrongAgain.fxml"));
+					Scene menuViewScene = new Scene(menuViewParent);
+					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+					stage.setScene(menuViewScene);
+					stage.show();
+					status=Status.Failed;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			else {
+				try {
+					menuViewParent = FXMLLoader.load(Main.class.getResource("view/Wrong.fxml"));
+					Scene menuViewScene = new Scene(menuViewParent);
+					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+					stage.setScene(menuViewScene);
+					stage.show();
+					status=Status.Try_Again;
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -147,11 +174,11 @@ public class SpeechScript extends Task<Void> {
 
 	@Override
 	protected void cancelled() {
-	super.cancelled();
-	updateMessage("Cancelled!");
-	
+		super.cancelled();
+		updateMessage("Cancelled!");
+
 	}
-	
+
 	protected void numbertoMaori() {
 		if(num == 1) {
 			maoriWord = Numbers.tahi;
@@ -180,15 +207,15 @@ public class SpeechScript extends Task<Void> {
 		else if(num == 9) {
 			maoriWord = Numbers.iwa;
 		}
-		
+
 	}
 	public void setEvent(ActionEvent event2) {
 		event = event2;
 	}
 	@Override 
 	protected void failed() {
-	super.failed();
-	updateMessage("Failed!");
-	
+		super.failed();
+		updateMessage("Failed!");
+
 	}
 }

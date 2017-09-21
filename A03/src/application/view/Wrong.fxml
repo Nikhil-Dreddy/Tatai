@@ -3,31 +3,41 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongController">
    <children>
-      <VBox alignment="CENTER" layoutX="132.0" layoutY="119.0" prefHeight="163.0" prefWidth="337.0">
+      <VBox alignment="CENTER" layoutX="6.0" layoutY="119.0" prefHeight="163.0" prefWidth="592.0">
          <children>
             <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="94.0" prefWidth="178.0" text="Wrong" textAlignment="CENTER" textFill="#cf330e">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
-            <Label text="Label">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" text="Try Again">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
+            <HBox prefHeight="69.0" prefWidth="379.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="You said ">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="wrongAns" text="Label">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Quit">
+      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
          <font>
             <Font size="18.0" />
          </font></Button>
