@@ -1,5 +1,7 @@
 package application.model;
-
+/*
+ * delete thsi class - useless
+ */
 public enum Numbers {
 tahi,
 rua,

@@ -34,5 +34,6 @@ public class WrongAgainController extends AbstractController implements Initiali
 		RecordController recordController = new RecordController();
 		userAnsLabel.setText(recordController.getWrongAns());
 		NumberGenerator numberGenerator = new NumberGenerator();
+		correctAnsLabel.setText(numberGenerator.getMaoriNum());
 	}
 }
