@@ -2,9 +2,11 @@ package application.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
+import application.model.Numbers;
 import application.model.SpeechScript;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,8 +18,8 @@ public class RecordController extends AbstractController implements Initializabl
 	
 	NumberGenerator numberGenerator = new NumberGenerator();
 	
-	private static int questionNo = 0;
-	private static int score = 0;
+	public static int questionNo = 0;
+	public static int score = 0;
 //	private static int mistakes;
 	private static String ans;
 	
@@ -40,11 +42,11 @@ public class RecordController extends AbstractController implements Initializabl
 		}
 		// if user is not on last try, then get random number
 		// or else just use number that they got wrong so they can try again
-		if (! tryAgain){
+		if (!tryAgain){
 			numberGenerator.generateNum();
 		}
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
-		speech = new SpeechScript(numberGenerator.getNum(),this.score,this.questionNo);
+		speech = new SpeechScript(numberGenerator.getNum(),this.score,this.questionNo,this.tryAgain,this);
 		questionLabel.setText(score+"/"+questionNo);	
 	}
 	
@@ -55,6 +57,45 @@ public class RecordController extends AbstractController implements Initializabl
 		new Thread(speech).start();
 		
 	}
+	
+	
+	public void afterResult(ArrayList<String> words,Numbers maoriWord,ActionEvent event  ) {
+		if(words.get(0).equals(maoriWord.toString())) {
+			try {
+				changeScene(event, "Correct");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			score++;
+			questionNo++;
+			tryAgain = false;
+		} else {
+			// user is wrong
+			if (! tryAgain){
+				// if first time wrong, let them try again
+				tryAgain = true;
+				try {
+					changeScene(event, "Wrong");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				// user is too retarded and qusetion is wrong
+				// skip to next question
+				questionNo++;
+				tryAgain = false;
+				try {
+					changeScene(event, "WrongAgain");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{

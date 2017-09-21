@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import application.Main;
+import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,13 +26,16 @@ public class SpeechScript extends Task<Void> {
 	int score;
 	int qNo;
 	private static Status status = Status.Pass ;
-	public SpeechScript(int number,int score,int qNo) {
+	private boolean tryAgain;
+	RecordController recCon;
+	public SpeechScript(int number,int score,int qNo, boolean tryAgain, RecordController recordController) {
 		this.num =number;
 		words = new ArrayList<>();
 		this.numbertoMaori();
 		this.score = score;
 		this.qNo = qNo;
-
+		this.tryAgain = tryAgain;
+		this.recCon = recordController;
 	}
 	@Override
 	protected Void call() throws Exception {
@@ -122,53 +126,7 @@ public class SpeechScript extends Task<Void> {
 	@Override
 	protected void succeeded() {
 		super.succeeded();
-		if(words.get(0).equals(maoriWord.toString())) {
-			Parent menuViewParent;
-			try {
-				menuViewParent = FXMLLoader.load(Main.class.getResource("view/Pass.fxml"));
-				Scene menuViewScene = new Scene(menuViewParent);
-				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				stage.setScene(menuViewScene);
-				stage.show();
-				score++;
-				qNo++;
-				status = Status.Pass;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else {
-			Parent menuViewParent;
-			if(status == Status.Try_Again) {
-				try {
-					menuViewParent = FXMLLoader.load(Main.class.getResource("view/WrongAgain.fxml"));
-					Scene menuViewScene = new Scene(menuViewParent);
-					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-					stage.setScene(menuViewScene);
-					stage.show();
-					status=Status.Failed;
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-			else {
-				try {
-					menuViewParent = FXMLLoader.load(Main.class.getResource("view/Wrong.fxml"));
-					Scene menuViewScene = new Scene(menuViewParent);
-					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-					stage.setScene(menuViewScene);
-					stage.show();
-					status=Status.Try_Again;
-
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+		recCon.afterResult(words, maoriWord, event);
 	}
 
 
