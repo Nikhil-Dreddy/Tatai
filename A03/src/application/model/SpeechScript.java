@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import application.Main;
+import application.MainApp;
 import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
