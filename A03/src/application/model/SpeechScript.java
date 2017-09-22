@@ -20,18 +20,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SpeechScript extends Task<Void> {
-	private int num;
 
-	private ArrayList<String> words;
+	private static ArrayList<String> words = new ArrayList<String>();
 	private ActionEvent event;
-	RecordController recCon;
+	RecordController recordController = new RecordController();;
 	
-	public SpeechScript(int number,RecordController recordController) {
-		words = new ArrayList<>();
-		this.recCon = recordController;
-	}
 
-	// records voice
+	// records voice					
+
+
 	// converts audio to txt
 	@Override
 	protected Void call() throws Exception {
@@ -82,15 +79,17 @@ public class SpeechScript extends Task<Void> {
 		return null;
 	}
 
+	/*
+	 * Reads file produced and returns array list
+	 */
 	@Override
 	protected void succeeded() {
 		super.succeeded();
 		try {
 			this.readAnswerFile();
 			// hands control back to recordController
-			recCon.afterResult(words, event);
+			recordController.afterResult(words, event);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -120,11 +119,12 @@ public class SpeechScript extends Task<Void> {
 		BufferedReader br = new BufferedReader(fr);
 		String sCurrentLine;
 		boolean pro = false;
-		int count = 0;
+		
 		while ((sCurrentLine = br.readLine()) != null) {
-			if(!sCurrentLine.equals("sil") & pro & !sCurrentLine.equals(".")) {		
-				words.add(sCurrentLine);
+			if(!sCurrentLine.equals("sil") & pro & !sCurrentLine.equals(".")) {	
 				System.out.println(sCurrentLine);
+
+				words.add(sCurrentLine);
 			}
 			if(sCurrentLine.equals("sil")) {
 				pro = true;
@@ -151,7 +151,6 @@ public class SpeechScript extends Task<Void> {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
