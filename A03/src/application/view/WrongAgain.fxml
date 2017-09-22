@@ -19,7 +19,6 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            
             <Label fx:id="userAnsLabel" layoutX="281.0" layoutY="182.0" text="Label" textFill="#c60606">
                <font>
                   <Font size="29.0" />
@@ -37,7 +36,7 @@
             </Label>
             <Button layoutX="225.0" layoutY="288.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Question" />
             <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit" />
-            <Button layoutX="229.0" layoutY="347.0" mnemonicParsing="false" text="Listen" onAction="#listenRecording"/>
+            <Button layoutX="229.0" layoutY="347.0" mnemonicParsing="false" text="Listen" />
          </children>
       </AnchorPane>
    </children>

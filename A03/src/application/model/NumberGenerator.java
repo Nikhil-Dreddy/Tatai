@@ -29,31 +29,31 @@ public class NumberGenerator {
 	
 	public String digitToMaori(int i){
 		if(i == 1){
-			return "Tahi";
+			return "tahi";
 		}
 		if(i == 2){
-			return "Rua";
+			return "rua";
 		}
 		if(i == 3){
-			return "Toru";
+			return "toru";
 		}
 		if(i == 4){
-			return "Wha";
+			return "wha";
 		}
 		if(i == 5){
-			return "Rima";
+			return "rima";
 		}
 		if(i == 6){
-			return "Ono";
+			return "ono";
 		}
 		if(i == 7){
-			return "Whitu";
+			return "whitu";
 		}
 		if(i == 8){
-			return "Waru";
+			return "waru";
 		}
 		if(i == 9){
-			return "Iwa";
+			return "iwa";
 		}
 		return "";
 	}
@@ -65,11 +65,11 @@ public class NumberGenerator {
 		if (firstDigit == 0){
 			return digitToMaori(secondDigit);
 		} else if (firstDigit == 1){
-			return "Tekau Ma "+digitToMaori(secondDigit);
+			return "tekau ma "+digitToMaori(secondDigit);
 		} else if(secondDigit == 0){
-			return digitToMaori(firstDigit)+" Tekau";
+			return digitToMaori(firstDigit)+" tekau";
 		} else {
-			return digitToMaori(firstDigit)+" Tekau Ma "+digitToMaori(secondDigit);
+			return digitToMaori(firstDigit)+" tekau ma "+digitToMaori(secondDigit);
 		}
 	}
 	

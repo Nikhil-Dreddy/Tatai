@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ResultController">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
    <children>
       <AnchorPane layoutX="130.0" layoutY="55.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="90.0" layoutY="141.0" text="Your score:">
+            <Label layoutX="90.0" layoutY="141.0" text="you got ...">
                <font>
                   <Font size="49.0" />
                </font>
@@ -19,7 +19,6 @@
                   <Font size="48.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="score" layoutX="374.0" layoutY="165.0" />
          </children>
       </AnchorPane>
    </children>

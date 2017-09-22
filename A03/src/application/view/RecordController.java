@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
-import application.model.Numbers;
 import application.model.SpeechScript;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +20,7 @@ public class RecordController extends AbstractController implements Initializabl
 	public static int questionNo = 0;
 	public static int score = 0;
 //	private static int mistakes;
-	private static String ans;
+	private static String userAns;
 	
 	private SpeechScript speech;
 	
@@ -46,7 +45,7 @@ public class RecordController extends AbstractController implements Initializabl
 			numberGenerator.generateNum();
 		}
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
-		speech = new SpeechScript(numberGenerator.getNum(),this);
+		speech = new SpeechScript();
 		questionLabel.setText(score+"/"+questionNo);	
 	}
 	
@@ -54,16 +53,21 @@ public class RecordController extends AbstractController implements Initializabl
 	// pretty much same functionality as real record
 	public void record(ActionEvent event) throws IOException{
 		speech.setEvent(event);
-		new Thread(speech).start();
-	
-		
+		new Thread(speech).start();	
 	}
 	
 	
-	public void afterResult(ArrayList<String> words,ActionEvent event  ) {
+	public void afterResult(ArrayList<String> words, ActionEvent event ) {
+		
+		if(words == null){
+			userAns = "user said nothign";
+		} else {
+			userAns = String.join(" ", words);
+		}
+		
 		String maoriWord = numberGenerator.getMaoriNum();
 		
-		if(words.get(0).equalsIgnoreCase(maoriWord)) {
+		if(userAns.equalsIgnoreCase(maoriWord)) {
 			try {
 				changeScene(event, "Correct");
 			} catch (IOException e) {
@@ -102,11 +106,11 @@ public class RecordController extends AbstractController implements Initializabl
 	
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
-		changeScene(event,"Menu");
+		changeScene(event,"Result");
 	}
 	
 	public String getWrongAns(){
-		return ans;
+		return userAns;
 	}
 	
 	@Override

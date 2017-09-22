@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import application.Main;
+import application.MainApp;
 import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -20,18 +20,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SpeechScript extends Task<Void> {
-	private int num;
 
-	private ArrayList<String> words;
+	private static ArrayList<String> words = new ArrayList<String>();
 	private ActionEvent event;
-	RecordController recCon;
+	RecordController recordController = new RecordController();;
 	
-	public SpeechScript(int number,RecordController recordController) {
-		words = new ArrayList<>();
-		this.recCon = recordController;
-	}
 
-	// records voice
+	// records voice					
+
+
 	// converts audio to txt
 	@Override
 	protected Void call() throws Exception {
@@ -82,15 +79,17 @@ public class SpeechScript extends Task<Void> {
 		return null;
 	}
 
+	/*
+	 * Reads file produced and returns array list
+	 */
 	@Override
 	protected void succeeded() {
 		super.succeeded();
 		try {
 			this.readAnswerFile();
 			// hands control back to recordController
-			recCon.afterResult(words, event);
+			recordController.afterResult(words, event);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -120,11 +119,12 @@ public class SpeechScript extends Task<Void> {
 		BufferedReader br = new BufferedReader(fr);
 		String sCurrentLine;
 		boolean pro = false;
-		int count = 0;
+		
 		while ((sCurrentLine = br.readLine()) != null) {
-			if(!sCurrentLine.equals("sil") & pro & !sCurrentLine.equals(".")) {		
-				words.add(sCurrentLine);
+			if(!sCurrentLine.equals("sil") & pro & !sCurrentLine.equals(".")) {	
 				System.out.println(sCurrentLine);
+
+				words.add(sCurrentLine);
 			}
 			if(sCurrentLine.equals("sil")) {
 				pro = true;
@@ -132,5 +132,26 @@ public class SpeechScript extends Task<Void> {
 		}
 	}
 	
-	
+	public void playRecording() {
+		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
+				.redirectErrorStream(true);
+		pb3.directory(new File("HTK/MaoriNumbers"));
+		try {			
+			Process process = pb3.start();
+			String line = "";
+			InputStream out = process.getInputStream();
+			BufferedReader stdout = new BufferedReader(new InputStreamReader(out));
+
+			while ((line = stdout.readLine()) != null ) {	
+				if(isCancelled()) {
+					break;
+				}
+
+				System.out.println(line);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
