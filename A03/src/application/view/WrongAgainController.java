@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.model.ListenerWorker;
 import application.model.NumberGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import javafx.scene.control.Label;
 
 public class WrongAgainController extends AbstractController implements Initializable{
 	
-	
+	private ListenerWorker worker = new ListenerWorker();
 	@FXML
 	private Label userAnsLabel;
 	
@@ -28,7 +29,11 @@ public class WrongAgainController extends AbstractController implements Initiali
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
 		changeScene(event,"Record");
 	}
-
+	
+	public void listenRecording(ActionEvent event) throws IOException{
+		new Thread(worker).start();
+	} 
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		RecordController recordController = new RecordController();

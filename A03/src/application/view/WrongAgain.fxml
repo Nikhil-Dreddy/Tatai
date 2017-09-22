@@ -36,7 +36,7 @@
             </Label>
             <Button layoutX="225.0" layoutY="288.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Question" />
             <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit" />
-            <Button layoutX="229.0" layoutY="347.0" mnemonicParsing="false" text="Listen" />
+            <Button layoutX="229.0" layoutY="347.0" mnemonicParsing="false" onAction="#listenRecording" text="Listen" />
          </children>
       </AnchorPane>
    </children>
