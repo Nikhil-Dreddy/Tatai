@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.model.ListenerWorker;
 import application.model.NumberGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ public class WrongAgainController extends AbstractController implements Initiali
 	
 	@FXML
 	private Label correctAnsLabel;
-
+	ListenerWorker Worker;
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
 		changeScene(event,"Menu");
@@ -28,12 +29,18 @@ public class WrongAgainController extends AbstractController implements Initiali
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
 		changeScene(event,"Record");
 	}
+	
+	public void listenRecording(ActionEvent event) throws IOException{
+		Worker = new ListenerWorker();
+		new Thread(Worker).start();
+	}
 
+
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		RecordController recordController = new RecordController();
 		userAnsLabel.setText(recordController.getWrongAns());
 		NumberGenerator numberGenerator = new NumberGenerator();
-		correctAnsLabel.setText(numberGenerator.getMaoriNum());
 	}
 }

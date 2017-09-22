@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import application.MainApp;
+import application.Main;
 import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -132,27 +132,5 @@ public class SpeechScript extends Task<Void> {
 		}
 	}
 	
-	public void playRecording() {
-		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
-				.redirectErrorStream(true);
-		pb3.directory(new File("HTK/MaoriNumbers"));
-		try {			
-			Process process = pb3.start();
-			String line = "";
-			InputStream out = process.getInputStream();
-			BufferedReader stdout = new BufferedReader(new InputStreamReader(out));
-
-			while ((line = stdout.readLine()) != null ) {	
-				if(isCancelled()) {
-					break;
-				}
-
-				System.out.println(line);
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 }
