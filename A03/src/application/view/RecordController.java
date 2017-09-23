@@ -3,6 +3,7 @@ package application.view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
@@ -10,6 +11,9 @@ import application.model.SpeechScript;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -17,8 +21,8 @@ public class RecordController extends AbstractController implements Initializabl
 
 	NumberGenerator numberGenerator = new NumberGenerator();
 
-	public static int questionNo = 9;
-	public static int score = 0;
+	public static int questionNo = 8;
+	public static int score = 7;
 	//	private static int mistakes;
 	private static String userAns;
 
@@ -28,6 +32,9 @@ public class RecordController extends AbstractController implements Initializabl
 	// if true, then user is on his last try before getting question wrong
 	private static boolean tryAgain = false; 
 
+	//pop-up when user doesnt say anything
+	private Alert alert = new Alert(AlertType.WARNING);
+	
 	@FXML
 	private Label numLabel;
 	@FXML
@@ -68,8 +75,24 @@ public class RecordController extends AbstractController implements Initializabl
 			}
 		}
 		else {
-			if(words == null){
-				userAns = "user said nothign";
+			if(words.isEmpty()){
+				userAns = "";
+				//If nothing was said a pop-up comes tell the user to re-record
+				alert.setTitle("Error");
+				alert.setHeaderText("No Word?");
+				alert.setContentText("No word was said,press Ok to Re-record");
+				ButtonType buttonYes = new ButtonType("Ok");
+				alert.getButtonTypes().setAll(buttonYes);
+				speech = new SpeechScript();
+				Optional<ButtonType> result = alert.showAndWait();
+				if(result.get() == buttonYes) {
+					try {
+						this.record(event);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			} else {
 				userAns = String.join(" ", words);
 			}
@@ -86,7 +109,7 @@ public class RecordController extends AbstractController implements Initializabl
 				score++;
 				questionNo++;
 				tryAgain = false;
-			} else {
+			} else if(!userAns.isEmpty()){
 				// user is wrong
 				if (!tryAgain){
 					// if first time wrong, let them try again
@@ -123,6 +146,20 @@ public class RecordController extends AbstractController implements Initializabl
 		return userAns;
 	}
 
+	public int getScore(){
+		return score;
+	}
+	public void setScore(int x){
+		score = x;
+	}
+	
+	public int getQno(){
+		return this.questionNo;
+	}
+	public void getQno(int x){
+		this.questionNo = x;
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setNumLabel();

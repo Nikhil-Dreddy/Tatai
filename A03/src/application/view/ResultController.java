@@ -33,9 +33,13 @@ public class ResultController extends AbstractController implements Initializabl
 	public Label getScoreLabel() {
 		scoreLabel.setText(RecordController.score + "/10");
 		if(RecordController.score > 7) {
+			RecordController.score = 0;
+			RecordController.questionNo = 0;
 			nextLevelButton.setDisable(false);
 		}
 		else {
+			RecordController.score = 0;
+			RecordController.questionNo = 0;
 			nextLevelButton.setDisable(true);
 		}
 		
