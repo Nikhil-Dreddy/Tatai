@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
 import application.model.SpeechScript;
+import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 public class RecordController extends AbstractController implements Initializable{
@@ -31,7 +35,8 @@ public class RecordController extends AbstractController implements Initializabl
 	private ResultController rController = new ResultController();
 	// if true, then user is on his last try before getting question wrong
 	private static boolean tryAgain = false; 
-
+	
+	private static boolean reRecord; 
 	//pop-up when user doesnt say anything
 	private Alert alert = new Alert(AlertType.WARNING);
 	
@@ -49,7 +54,7 @@ public class RecordController extends AbstractController implements Initializabl
 		}
 		// if user is not on last try, then get random number
 		// or else just use number that they got wrong so they can try again
-		if (!tryAgain){
+		if (!tryAgain|!reRecord){
 			numberGenerator.generateNum();
 		}
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
@@ -62,6 +67,7 @@ public class RecordController extends AbstractController implements Initializabl
 	public void record(ActionEvent event) throws IOException{
 		speech.setEvent(event);
 		new Thread(speech).start();	
+		updatePB();
 	}
 
 
@@ -86,8 +92,9 @@ public class RecordController extends AbstractController implements Initializabl
 				speech = new SpeechScript();
 				Optional<ButtonType> result = alert.showAndWait();
 				if(result.get() == buttonYes) {
+					reRecord = true;
 					try {
-						this.record(event);
+						changeScene(event,"Record");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -109,11 +116,13 @@ public class RecordController extends AbstractController implements Initializabl
 				score++;
 				questionNo++;
 				tryAgain = false;
+				reRecord = false;
 			} else if(!userAns.isEmpty()){
 				// user is wrong
 				if (!tryAgain){
 					// if first time wrong, let them try again
 					tryAgain = true;
+					reRecord = false;
 					try {
 						changeScene(event, "Wrong");
 					} catch (IOException e) {
@@ -125,6 +134,7 @@ public class RecordController extends AbstractController implements Initializabl
 					// skip to next question
 					questionNo++;
 					tryAgain = false;
+					reRecord = false;
 					try {
 						changeScene(event, "WrongAgain");
 					} catch (IOException e) {
@@ -164,5 +174,31 @@ public class RecordController extends AbstractController implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setNumLabel();
 	}
-
+	
+	//////////////////
+	
+	
+	@FXML
+	private ProgressBar pb;
+	
+	public void updatePB(){
+		new Thread(() -> {
+			for (int i=0; i<=100; i++){
+				final int position = i;
+				Platform.runLater(new Runnable(){
+	
+					@Override
+					public void run() {
+						pb.setProgress(position/100.0);
+					}
+					
+				});
+				try{
+					Thread.sleep(20);
+				} catch (Exception e){
+				}
+			}
+		}).start();
+	}
+	
 }
