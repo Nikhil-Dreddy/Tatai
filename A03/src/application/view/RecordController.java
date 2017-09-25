@@ -27,19 +27,19 @@ public class RecordController extends AbstractController implements Initializabl
 
 	public static int questionNo = 8;
 	public static int score = 7;
-	//	private static int mistakes;
 	private static String userAns;
 
 	private SpeechScript speech;
 
 	private ResultController rController = new ResultController();
-	// if true, then user is on his last try before getting question wrong
+
 	private static boolean tryAgain = false; 
-	
-	private static boolean reRecord; 
+		
 	//pop-up when user doesnt say anything
 	private Alert alert = new Alert(AlertType.WARNING);
 	
+	@FXML
+	private ProgressBar pb;
 	@FXML
 	private Label numLabel;
 	@FXML
@@ -48,13 +48,10 @@ public class RecordController extends AbstractController implements Initializabl
 	private TextField ansTextField;
 
 	public void setNumLabel(){
-		// if 10 questions have been asked, send to *** scene
-		if (questionNo == 10){
-
-		}
+		
 		// if user is not on last try, then get random number
 		// or else just use number that they got wrong so they can try again
-		if (!tryAgain|!reRecord){
+		if (!tryAgain){
 			numberGenerator.generateNum();
 		}
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
@@ -82,6 +79,7 @@ public class RecordController extends AbstractController implements Initializabl
 		}
 		else {
 			if(words.isEmpty()){
+				tryAgain = true;
 				userAns = "";
 				//If nothing was said a pop-up comes tell the user to re-record
 				alert.setTitle("Error");
@@ -92,7 +90,6 @@ public class RecordController extends AbstractController implements Initializabl
 				speech = new SpeechScript();
 				Optional<ButtonType> result = alert.showAndWait();
 				if(result.get() == buttonYes) {
-					reRecord = true;
 					try {
 						changeScene(event,"Record");
 					} catch (IOException e) {
@@ -101,48 +98,47 @@ public class RecordController extends AbstractController implements Initializabl
 					}
 				}
 			} else {
+				/* 
+				 * if words is not empty
+				 */
+				
 				userAns = String.join(" ", words);
-			}
+				
+				String maoriWord = numberGenerator.getMaoriNum();
 
-			String maoriWord = numberGenerator.getMaoriNum();
-
-			if(userAns.equalsIgnoreCase(maoriWord)) {
-				try {
-					changeScene(event, "Correct");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				score++;
-				questionNo++;
-				tryAgain = false;
-				reRecord = false;
-			} else if(!userAns.isEmpty()){
-				// user is wrong
-				if (!tryAgain){
-					// if first time wrong, let them try again
-					tryAgain = true;
-					reRecord = false;
+				if(userAns.equalsIgnoreCase(maoriWord)) {
 					try {
-						changeScene(event, "Wrong");
+						changeScene(event, "Correct");
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				} else {
-					// user is too retarded and qusetion is wrong
-					// skip to next question
+					score++;
 					questionNo++;
 					tryAgain = false;
-					reRecord = false;
-					try {
-						changeScene(event, "WrongAgain");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				} else {
+					// user is wrong
+					if (!tryAgain){
+						// if first time wrong, let them try again
+						tryAgain = true;
+						try {
+							changeScene(event, "Wrong");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					} else if(tryAgain) {
+						// user is too retarded and qusetion is wrong
+						// skip to next question
+						questionNo++;
+						tryAgain = false;
+						try {
+							changeScene(event, "WrongAgain");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
+			
 		}
 	}
 
@@ -174,12 +170,6 @@ public class RecordController extends AbstractController implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setNumLabel();
 	}
-	
-	//////////////////
-	
-	
-	@FXML
-	private ProgressBar pb;
 	
 	public void updatePB(){
 		new Thread(() -> {
