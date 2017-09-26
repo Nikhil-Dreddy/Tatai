@@ -48,7 +48,6 @@ public class ResultController extends AbstractController implements Initializabl
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		getScoreLabel();
 	}
 
