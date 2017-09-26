@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 public class RecordController extends AbstractController implements Initializable{
 	
 	private enum Status{
-		NEW_QUESTION, NO_ANS, WRONG_ANS, CORRECT_ANS
+		NEW_QUESTION, NO_ANS, WRONG_ANS
 	}
 
 	NumberGenerator numberGenerator = new NumberGenerator();
@@ -37,7 +37,8 @@ public class RecordController extends AbstractController implements Initializabl
 
 	private ResultController rController = new ResultController();
 
-	private static boolean tryAgain = false; 
+//	private static boolean tryAgain = false; 
+	private static Status status = Status.NEW_QUESTION;
 		
 	//pop-up when user doesnt say anything
 	private Alert alert = new Alert(AlertType.WARNING);
@@ -50,12 +51,16 @@ public class RecordController extends AbstractController implements Initializabl
 	private Label questionLabel;
 	@FXML
 	private TextField ansTextField;
+	
+	private void setStatus(Status s){
+		status = s;
+	}
 
 	public void setNumLabel(){
 		
 		// if user is not on last try, then get random number
 		// or else just use number that they got wrong so they can try again
-		if (!tryAgain){
+		if (status == Status.NEW_QUESTION){
 			numberGenerator.generateNum();
 		}
 		numLabel.setText(String.valueOf(numberGenerator.getNum()));
@@ -83,7 +88,7 @@ public class RecordController extends AbstractController implements Initializabl
 		}
 		else {
 			if(words.isEmpty()){
-				tryAgain = true;
+				setStatus(Status.NO_ANS);
 				userAns = "";
 				//If nothing was said a pop-up comes tell the user to re-record
 				alert.setTitle("Error");
@@ -110,6 +115,7 @@ public class RecordController extends AbstractController implements Initializabl
 				
 				String maoriWord = numberGenerator.getMaoriNum();
 
+				// user is correct
 				if(userAns.equalsIgnoreCase(maoriWord)) {
 					try {
 						changeScene(event, "Correct");
@@ -118,22 +124,22 @@ public class RecordController extends AbstractController implements Initializabl
 					}
 					score++;
 					questionNo++;
-					tryAgain = false;
+					setStatus(Status.NEW_QUESTION);
 				} else {
 					// user is wrong
-					if (!tryAgain){
+					if (status != Status.WRONG_ANS){
 						// if first time wrong, let them try again
-						tryAgain = true;
+						setStatus(Status.WRONG_ANS);
 						try {
 							changeScene(event, "Wrong");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					} else if(tryAgain) {
-						// user is too retarded and qusetion is wrong
+					} else if(status == Status.WRONG_ANS) {
+						// user gets question wrong again
 						// skip to next question
 						questionNo++;
-						tryAgain = false;
+						setStatus(Status.NEW_QUESTION);
 						try {
 							changeScene(event, "WrongAgain");
 						} catch (IOException e) {
