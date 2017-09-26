@@ -25,6 +25,9 @@ public class SpeechScript extends Task<Void> {
 	private ActionEvent event;
 	RecordController recordController = new RecordController();;
 	
+	public SpeechScript(RecordController rC) {
+		recordController = rC;
+	}
 
 	// records voice					
 
@@ -85,13 +88,7 @@ public class SpeechScript extends Task<Void> {
 	@Override
 	protected void succeeded() {
 		super.succeeded();
-		try {
-			this.readAnswerFile();
-			// hands control back to recordController
-			recordController.afterResult(words, event);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		recordController.makeButtonsVisible();
 	}
 
 	@Override
@@ -130,6 +127,7 @@ public class SpeechScript extends Task<Void> {
 				pro = true;
 			}
 		}
+//		return words;
 	}
 	
 	public void playRecording() {
@@ -153,5 +151,9 @@ public class SpeechScript extends Task<Void> {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<String> getWords(){
+		return words;
 	}
 }

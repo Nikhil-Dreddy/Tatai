@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class ResultController extends AbstractController implements Initializable{
+	
+	private int score;
 
 	@FXML
 	private Label scoreLabel ;
@@ -20,6 +22,8 @@ public class ResultController extends AbstractController implements Initializabl
 	private Button nextLevelButton = new Button();
 
 	private NumberGenerator number = new NumberGenerator();
+	
+	private RecordController recordController = new RecordController();
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
@@ -30,16 +34,14 @@ public class ResultController extends AbstractController implements Initializabl
 		number.setDifficultyToHard();
 		changeScene(event,"Record");
 	}
+	
 	public Label getScoreLabel() {
-		scoreLabel.setText(RecordController.score + "/10");
-		if(RecordController.score > 7) {
-			RecordController.score = 0;
-			RecordController.questionNo = 0;
+		score = recordController.getScore();
+		scoreLabel.setText(score + "/10");
+		if(score > 7) {
 			nextLevelButton.setDisable(false);
 		}
 		else {
-			RecordController.score = 0;
-			RecordController.questionNo = 0;
 			nextLevelButton.setDisable(true);
 		}
 		

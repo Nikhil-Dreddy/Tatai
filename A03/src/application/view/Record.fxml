@@ -3,18 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
    <children>
-      <Button layoutX="241.0" layoutY="264.0" mnemonicParsing="false" onAction="#record" prefHeight="41.0" prefWidth="119.0" text="Record">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Label fx:id="numLabel" alignment="CENTER" layoutX="210.0" layoutY="81.0" prefHeight="155.0" prefWidth="181.0" text=" " textAlignment="CENTER">
+      <Label fx:id="numLabel" alignment="CENTER" layoutX="184.0" layoutY="48.0" prefHeight="183.0" prefWidth="234.0" text="hi" textAlignment="CENTER">
          <font>
             <Font size="96.0" />
          </font></Label>
@@ -24,8 +18,21 @@
          </font>
       </Button>
       <Label fx:id="questionLabel" layoutX="14.0" layoutY="14.0" text="  /10" />
-      <TextField fx:id="ansTextField" layoutX="391.0" layoutY="334.0" />
-      <Label layoutX="391.0" layoutY="318.0" text="Capital letters only" />
-      <ProgressBar fx:id="pb" layoutX="191.0" layoutY="334.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="pb" layoutX="103.0" layoutY="327.0" prefHeight="20.0" prefWidth="395.0" progress="0.0" />
+    <Button fx:id="listenButton" layoutX="72.0" layoutY="186.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="96.0" text="Listen">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="172.0" layoutY="184.0" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" text="Record">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="submitButton" layoutX="463.0" layoutY="193.0" mnemonicParsing="false" onAction="#submit" prefHeight="88.0" text="Submit">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
