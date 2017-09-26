@@ -22,6 +22,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 public class RecordController extends AbstractController implements Initializable{
+	
+	private enum Status{
+		NEW_QUESTION, NO_ANS, WRONG_ANS, CORRECT_ANS
+	}
 
 	NumberGenerator numberGenerator = new NumberGenerator();
 
