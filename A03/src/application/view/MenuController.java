@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import application.model.NumberGenerator;
 import javafx.fxml.Initializable;
 
-public class MenuController extends AbstractController implements Initializable{ 
+public class MenuController extends AbstractController { 
 	NumberGenerator number = new NumberGenerator();
 	public void easyButtonClicked(ActionEvent event) throws IOException{
 		number.setDifficultyToEasy();
@@ -26,9 +26,5 @@ public class MenuController extends AbstractController implements Initializable{
 		changeScene(event,"Record");
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

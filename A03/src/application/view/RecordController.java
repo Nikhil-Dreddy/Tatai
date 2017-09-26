@@ -95,24 +95,29 @@ public class RecordController extends AbstractController implements Initializabl
 				alert.setHeaderText("No Word?");
 				alert.setContentText("No word was said,press Ok to Re-record");
 				ButtonType buttonYes = new ButtonType("Ok");
-				alert.getButtonTypes().setAll(buttonYes);
+				ButtonType buttonQuit = new ButtonType("Quit");
+				alert.getButtonTypes().setAll(buttonYes,buttonQuit);
 				speech = new SpeechScript();
 				Optional<ButtonType> result = alert.showAndWait();
 				if(result.get() == buttonYes) {
 					try {
 						changeScene(event,"Record");
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if(result.get() == buttonQuit) {
+					try {
+						changeScene(event,"Menu");
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
 			} else {
 				/* 
 				 * if words is not empty
-				 */
-				
-				userAns = String.join(" ", words);
-				
+				 */		
+				userAns = String.join(" ", words);			
 				String maoriWord = numberGenerator.getMaoriNum();
 
 				// user is correct
@@ -155,27 +160,13 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
-		changeScene(event,"Result");
+		changeScene(event,"Menu");
 	}
 
 	public String getWrongAns(){
 		return userAns;
 	}
 
-	public int getScore(){
-		return score;
-	}
-	public void setScore(int x){
-		score = x;
-	}
-	
-	public int getQno(){
-		return this.questionNo;
-	}
-	public void getQno(int x){
-		this.questionNo = x;
-	}
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setNumLabel();
