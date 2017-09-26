@@ -16,7 +16,7 @@ public class WrongAgainController extends AbstractController implements Initiali
 	private ListenerWorker worker = new ListenerWorker();
 	@FXML
 	private Label userAnsLabel;
-	
+	private RecordController rC = new RecordController();
 	@FXML
 	private Label correctAnsLabel;
 
@@ -27,7 +27,14 @@ public class WrongAgainController extends AbstractController implements Initiali
 	
 	// for the next question botton
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
+		if(rC.getQno() == 10) {
+			changeScene(event,"Result");
+			rC.resetQno();
+			rC.resetScore();
+		}
+		else {
 		changeScene(event,"Record");
+		}
 	}
 	
 	public void listenRecording(ActionEvent event) throws IOException{

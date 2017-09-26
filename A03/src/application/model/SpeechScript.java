@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 public class SpeechScript extends Task<Void> {
 
-	private static ArrayList<String> words = new ArrayList<String>();
+	private ArrayList<String> words = new ArrayList<String>();
 	private ActionEvent event;
 	RecordController recordController = new RecordController();;
 	
@@ -120,7 +120,6 @@ public class SpeechScript extends Task<Void> {
 		while ((sCurrentLine = br.readLine()) != null) {
 			if(!sCurrentLine.equals("sil") & pro & !sCurrentLine.equals(".")) {	
 				System.out.println(sCurrentLine);
-
 				words.add(sCurrentLine);
 			}
 			if(sCurrentLine.equals("sil")) {
