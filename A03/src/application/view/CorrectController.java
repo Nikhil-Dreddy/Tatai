@@ -9,6 +9,8 @@ public class CorrectController extends AbstractController{
 	private RecordController rC = new RecordController();
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
+		rC.resetQno();
+		rC.resetScore();
 		changeScene(event,"Menu");
 	}
 

@@ -22,6 +22,8 @@ public class WrongAgainController extends AbstractController implements Initiali
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
+		rC.resetQno();
+		rC.resetScore();
 		changeScene(event,"Menu");
 	}
 	

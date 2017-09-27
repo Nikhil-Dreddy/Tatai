@@ -31,8 +31,8 @@ public class RecordController extends AbstractController implements Initializabl
 
 	NumberGenerator numberGenerator = new NumberGenerator();
 
-	private static int questionNo = 8;
-	private static int score = 7;
+	private static int questionNo = 0;
+	private static int score = 0;
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
 
@@ -148,6 +148,8 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
+		this.resetQno();
+		this.resetScore();
 		changeScene(event,"Menu");
 		setStatus(Status.NEW_QUESTION);
 	}
