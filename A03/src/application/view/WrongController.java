@@ -19,6 +19,8 @@ public class WrongController extends AbstractController implements Initializable
 	
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
+		recordController.resetQno();
+		recordController.resetScore();
 		changeScene(event,"Menu");
 	}
 	

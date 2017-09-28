@@ -25,10 +25,6 @@ public class MenuController extends AbstractController {
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
 		changeScene(event,"Record");
 	}
-	
-	public void changeSceneToInstructions(ActionEvent event) throws IOException{
-		changeScene(event,"Instructions");
-	}
 
 
 }
