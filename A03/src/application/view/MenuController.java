@@ -34,6 +34,9 @@ public class MenuController extends AbstractController  {
 		changeScene(event,"Instructions");
 	}
 
+	public void changeSceneToScore(ActionEvent event) throws IOException{
+		changeScene(event,"scores");
+	}
 
 
 

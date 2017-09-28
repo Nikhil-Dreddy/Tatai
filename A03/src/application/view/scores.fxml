@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ScoreController">
+   <children>
+      <AnchorPane layoutX="-213.0" layoutY="-166.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="table" layoutX="-2.0" layoutY="-1.0" prefHeight="342.0" prefWidth="600.0">
+              <columns>
+                  <TableColumn fx:id="It" prefWidth="197.0" text="No" />
+                <TableColumn fx:id="Correct" minWidth="0.0" prefWidth="201.0" text="Correct" />
+                  <TableColumn fx:id="Wrong" prefWidth="221.0" text="Wrong" />
+              </columns>
+            </TableView>
+            <Button layoutX="235.0" layoutY="353.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Main Menu" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -38,7 +38,7 @@ public class NumberGenerator {
 			return "toru";
 		}
 		if(i == 4){
-			return "wha";
+			return "whaa";
 		}
 		if(i == 5){
 			return "rima";
@@ -65,11 +65,11 @@ public class NumberGenerator {
 		if (firstDigit == 0){
 			return digitToMaori(secondDigit);
 		} else if (firstDigit == 1){
-			return "tekau ma "+digitToMaori(secondDigit);
+			return "tekau maa "+digitToMaori(secondDigit);
 		} else if(secondDigit == 0){
 			return digitToMaori(firstDigit)+" tekau";
 		} else {
-			return digitToMaori(firstDigit)+" tekau ma "+digitToMaori(secondDigit);
+			return digitToMaori(firstDigit)+" tekau maa "+digitToMaori(secondDigit);
 		}
 	}
 	

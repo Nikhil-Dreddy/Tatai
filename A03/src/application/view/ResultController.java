@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.model.NumberGenerator;
+import application.model.ScoreModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +15,6 @@ import javafx.scene.control.Label;
 public class ResultController extends AbstractController implements Initializable{
 	
 	private int score;
-
 	@FXML
 	private Label scoreLabel ;
 
@@ -36,6 +36,8 @@ public class ResultController extends AbstractController implements Initializabl
 	}
 	
 	public Label getScoreLabel() {
+		ScoreModel scores = new ScoreModel();
+		scores.addNewScore( recordController.getScore());
 		score = recordController.getScore();
 		scoreLabel.setText(score + "/10");
 		if(score > 7) {

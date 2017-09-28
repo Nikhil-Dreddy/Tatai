@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import application.model.ListenerWorker;
 import application.model.NumberGenerator;
+import application.model.ScoreModel;
 import application.model.SpeechScript;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,10 +29,9 @@ public class RecordController extends AbstractController implements Initializabl
 	}
 
 	ListenerWorker worker = new ListenerWorker();
-
 	NumberGenerator numberGenerator = new NumberGenerator();
 
-	private static int questionNo = 0;
+	private static int questionNo = 9;
 	private static int score = 0;
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
