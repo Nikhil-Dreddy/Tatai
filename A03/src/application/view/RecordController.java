@@ -190,6 +190,16 @@ public class RecordController extends AbstractController implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setNumLabel();
 	}
+
+		public int getQno() {
+		return this.questionNo;
+	}
+	public void resetQno() {
+		this.questionNo =0; 
+	}
+	public void resetScore() {
+		this.score =0; 
+	}
 	
 	public void updatePB(){
 		new Thread(() -> {
