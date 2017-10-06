@@ -13,7 +13,7 @@ import javafx.scene.Scene;
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	// hello very much
+	// yoza
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, InterruptedException {
