@@ -2,7 +2,7 @@ package application;
 
 import java.io.IOException;
 
-import com.sun.javafx.application.LauncherImpl;
+//import com.sun.javafx.application.LauncherImpl;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 public class MainApp extends Application {
 
 	private Stage primaryStage;
+	// hi
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, InterruptedException {
