@@ -14,14 +14,18 @@ import javafx.stage.Stage;
 
 public class MenuController extends AbstractController  {
 	NumberGenerator number = new NumberGenerator();
+	RecordController recController = new RecordController();
+	
 	public void easyButtonClicked(ActionEvent event) throws IOException{
 		number.setDifficultyToEasy();
+		recController.setQTypeQuestion();
 		changeSceneToRecord(event);
 	}
 
 
 	public void hardButtonClicked(ActionEvent event) throws IOException{
 		number.setDifficultyToHard();
+		recController.setQTypeQuestion();
 		changeSceneToRecord(event);
 	}
 
@@ -37,9 +41,9 @@ public class MenuController extends AbstractController  {
 	public void changeSceneToScore(ActionEvent event) throws IOException{
 		changeScene(event,"scores");
 	}
-
-
-
 	
-
+	public void equation(ActionEvent event) throws IOException{
+		recController.setQTypeEquation();
+		changeSceneToRecord(event);
+	}
 }

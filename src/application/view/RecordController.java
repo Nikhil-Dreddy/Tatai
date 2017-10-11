@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import application.model.Equation;
 import application.model.ListenerWorker;
 import application.model.NumberGenerator;
 import application.model.ScoreModel;
@@ -21,15 +22,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 
 public class RecordController extends AbstractController implements Initializable{
 
 	private enum Status{
 		NEW_QUESTION, NO_ANS, WRONG_ANS
 	}
+	
+	private enum QType{
+		QUESTION, EQUATION
+	}
 
 	ListenerWorker worker = new ListenerWorker();
 	NumberGenerator numberGenerator = new NumberGenerator();
+	Equation equation = new Equation();
 
 	private static int questionNo = 0;
 	private static int score = 0;
@@ -38,8 +45,8 @@ public class RecordController extends AbstractController implements Initializabl
 
 	private SpeechScript speech;
 
-	//	private static boolean tryAgain = false; 
 	private static Status status = Status.NEW_QUESTION;
+	private static QType qType;
 
 	//pop-up when user doesnt say anything
 	private Alert alert = new Alert(AlertType.WARNING);
@@ -51,8 +58,6 @@ public class RecordController extends AbstractController implements Initializabl
 	@FXML
 	private Label questionLabel;
 	@FXML
-	private TextField ansTextField;
-	@FXML
 	private Button listenButton = new Button();
 	@FXML
 	private Button submitButton = new Button();
@@ -62,13 +67,23 @@ public class RecordController extends AbstractController implements Initializabl
 	}
 
 	public void setNumLabel(){
-
-		// if user is not on last try, then get random number
-		// or else just use number that they got wrong so they can try again
-		if (status == Status.NEW_QUESTION){
-			numberGenerator.generateNum();
+		if (qType == QType.QUESTION) {
+			System.out.println("q");
+			// if user is not on last try, then get random number
+			// or else just use number that they got wrong so they can try again
+			if (status == Status.NEW_QUESTION){
+				numberGenerator.generateNum();
+			}
+			numLabel.setText(String.valueOf(numberGenerator.getNum()));
+		} else if (qType == QType.EQUATION) {
+			System.out.println("eq");
+			if (status == Status.NEW_QUESTION){
+				// generate new equation
+				equation.generateExpression();
+			}
+			numLabel.setText(equation.getEquation());
+			numLabel.setFont(new Font(30));
 		}
-		numLabel.setText(String.valueOf(numberGenerator.getNum()));
 		speech = new SpeechScript(this);
 		questionLabel.setText(score+"/"+questionNo);	
 		listenButton.setDisable(true);
@@ -91,7 +106,6 @@ public class RecordController extends AbstractController implements Initializabl
 	public void makeButtonsVisible(){
 		listenButton.setDisable(false);
 		submitButton.setDisable(false);
-		System.out.println("make buttons visble");
 	}
 
 	// when submit button is pressed
@@ -198,4 +212,11 @@ public class RecordController extends AbstractController implements Initializabl
 		this.score =0; 
 	}
 
+	public void setQTypeQuestion() {
+		qType = QType.QUESTION;
+	}
+	
+	public void setQTypeEquation() {
+		qType = QType.EQUATION;
+	}
 }
