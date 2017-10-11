@@ -13,7 +13,11 @@ public class ScoreModel {
 		Score A = new Score(username,score);
 		data.add(A);
 	}
-
+	
+	public void addNewScore(String username,int score) {
+		Score A = new Score(username,score);
+		data.add(A);
+	}
 	public ObservableList<Score> getData() {
 		return data;
 	}
