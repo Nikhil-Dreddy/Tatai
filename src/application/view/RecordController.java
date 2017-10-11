@@ -68,7 +68,6 @@ public class RecordController extends AbstractController implements Initializabl
 
 	public void setNumLabel(){
 		if (qType == QType.QUESTION) {
-			System.out.println("q");
 			// if user is not on last try, then get random number
 			// or else just use number that they got wrong so they can try again
 			if (status == Status.NEW_QUESTION){
@@ -76,7 +75,6 @@ public class RecordController extends AbstractController implements Initializabl
 			}
 			numLabel.setText(String.valueOf(numberGenerator.getNum()));
 		} else if (qType == QType.EQUATION) {
-			System.out.println("eq");
 			if (status == Status.NEW_QUESTION){
 				// generate new equation
 				equation.generateExpression();
@@ -134,7 +132,12 @@ public class RecordController extends AbstractController implements Initializabl
 			 * if words is not empty
 			 */		
 			userAns = String.join(" ", words);			
-			String maoriWord = numberGenerator.getMaoriNum(numberGenerator.getNum());
+			String maoriWord = "";
+			if (qType == QType.QUESTION) {
+				maoriWord = numberGenerator.getMaoriNum(numberGenerator.getNum());
+			} else if (qType == QType.EQUATION) {
+				maoriWord = numberGenerator.getMaoriNum(equation.getAns());
+			}
 
 			// user is correct
 			if(userAns.equalsIgnoreCase(maoriWord)) {
@@ -152,7 +155,9 @@ public class RecordController extends AbstractController implements Initializabl
 					// user gets question wrong again
 					// skip to next question
 					questionNo++;
-					setStatus(Status.NEW_QUESTION);					
+					setStatus(Status.NEW_QUESTION);	
+					WrongAgainController wrongAgainController = new WrongAgainController();
+					wrongAgainController.setCorrectAns(maoriWord);
 					changeScene(event, "WrongAgain");
 				}
 			}

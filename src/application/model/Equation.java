@@ -4,34 +4,41 @@ public class Equation {
 	private int operator;
 	private int a;
 	private int b; 
-	StringBuilder equation = new StringBuilder();
+	private static int ans;
+	private static StringBuilder equation;
 
 	public void generateNumbers() {
-		 operator = (int) (Math.random() * 4) + 1;
 		 a = (int) (Math.random() * 10) + 1;
 		 b = (int) (Math.random() * 10) + 1;
 		 
 	}
 	public void generateExpression() {
+		equation = new StringBuilder();
+		operator = (int) (Math.random() * 4) + 1;
 		generateNumbers();
-	    //append the first number
-	    equation.append(a);
 	    //generate/append the operator and calculate the real answer
 	    if (operator == 1) {
+		    equation.append(a);
 	        equation.append(" + ");
+	        ans = a+b;
 	    } else if (operator == 2) {
-	        equation.append(" - ");
+	    		while (b>=a) {
+	    			generateNumbers();
+	    			System.out.println(getEquation());
+	        } 
+	    		equation.append(a);
+    			equation.append(" - ");
+    			ans = a-b;
 	    } else if (operator == 3) {
+	    		equation.append(a);
 	        equation.append(" x ");
+	        ans = a*b;
 	    } else if (operator == 4) {
-	        if ((a%b==0) && (a>b)) {
-	        } else {
-	            generateNumbers();
-	        }
+    			a = a*b;
+	        equation.append(a);
 	        equation.append(" / ");
-
+	        ans = a/b;
 	    }
-	    // fk
 	    equation.append(b);
 	}
 	
@@ -42,4 +49,9 @@ public class Equation {
 	public String getEquation() {
 		return equation.toString();
 	}
+	
+	public int getAns() {
+		return ans;
+	}
+	
 }
