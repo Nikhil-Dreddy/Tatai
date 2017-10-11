@@ -19,6 +19,8 @@ public class WrongAgainController extends AbstractController implements Initiali
 	private RecordController rC = new RecordController();
 	@FXML
 	private Label correctAnsLabel;
+	
+	private static String correctAns;
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
@@ -43,11 +45,16 @@ public class WrongAgainController extends AbstractController implements Initiali
 		new Thread(worker).start();
 	} 
 	
+	public void setCorrectAns(String ans) {
+		correctAns = ans;
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		RecordController recordController = new RecordController();
 		userAnsLabel.setText(recordController.getWrongAns());
 		NumberGenerator numberGenerator = new NumberGenerator();
-		correctAnsLabel.setText(numberGenerator.getMaoriNum());
+//		correctAnsLabel.setText(numberGenerator.getMaoriNum(numberGenerator.getNum()));
+		correctAnsLabel.setText(correctAns);
 	}
 }
