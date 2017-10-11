@@ -17,7 +17,7 @@
             <Font name="Ubuntu Light" size="21.0" />
          </font>
       </Label>
-      <Button layoutX="110.0" layoutY="252.0" mnemonicParsing="false" onAction="#easyButtonClicked" prefHeight="68.0" prefWidth="145.0" text="Easy">
+      <Button layoutX="113.0" layoutY="258.0" mnemonicParsing="false" onAction="#easyButtonClicked" prefHeight="68.0" prefWidth="145.0" text="Easy">
          <font>
             <Font size="36.0" />
          </font>
