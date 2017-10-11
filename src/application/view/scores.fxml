@@ -11,7 +11,7 @@
          <children>
             <TableView fx:id="table" layoutX="-2.0" layoutY="-1.0" prefHeight="342.0" prefWidth="600.0">
               <columns>
-                  <TableColumn fx:id="It" prefWidth="197.0" text="Name" />
+                  <TableColumn fx:id="Username" prefWidth="197.0" text="Name" />
                 <TableColumn fx:id="Correct" minWidth="0.0" prefWidth="201.0" text="Correct" />
                   <TableColumn fx:id="Wrong" prefWidth="221.0" text="Wrong" />
               </columns>

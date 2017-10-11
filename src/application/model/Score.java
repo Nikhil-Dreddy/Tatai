@@ -1,19 +1,20 @@
 package application.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Score {
 	private SimpleIntegerProperty correct;
-	private SimpleIntegerProperty iteration;
+	private SimpleStringProperty username;
 	private SimpleIntegerProperty wrong;
 
-	public Score(int Iteration,int score) {
+	public Score(String username,int score) {
 		this.correct = new SimpleIntegerProperty(score);
-		this.iteration = new SimpleIntegerProperty(Iteration);
+		this.username = new SimpleStringProperty(username);
 		this.wrong = new SimpleIntegerProperty(10 - score);
 	}
 	public int getCorrect() 
 	{return correct.get();}
 	public int getWrong() {return wrong.get();}
-	public int getIteration() {return iteration.get();}
+	public String getUsername() {return username.get();}
 }

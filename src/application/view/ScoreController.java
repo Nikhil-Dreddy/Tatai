@@ -25,7 +25,7 @@ public class ScoreController extends AbstractController implements Initializable
 	@FXML
 	private TableColumn<Score, Integer> Wrong =  new TableColumn("Wrong");
 	@FXML
-	private TableColumn<Score, Integer> It =  new TableColumn("Iteration");
+	private TableColumn<Score, String> Username =  new TableColumn("User");
 
 
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
@@ -36,7 +36,7 @@ public class ScoreController extends AbstractController implements Initializable
 		// TODO Auto-generated method stub
 		Correct.setCellValueFactory(new PropertyValueFactory<Score, Integer>("correct"));
 		Wrong.setCellValueFactory(new PropertyValueFactory<Score, Integer>("wrong"));
-		It.setCellValueFactory(new PropertyValueFactory<Score, Integer>("Iteration"));
+		Username.setCellValueFactory(new PropertyValueFactory<Score, String>("username"));
 		table.setItems(model.getData());
 	}
 

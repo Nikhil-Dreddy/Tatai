@@ -5,12 +5,12 @@ import javafx.collections.ObservableList;
 
 public class ScoreModel {
 	private int correct;
-	private static int iteration;
+	public static String username;
 	private int wrong;
 	private static ObservableList<Score> data = FXCollections.observableArrayList();
 
 	public void addNewScore(int score) {
-		Score A = new Score(iteration++,score);
+		Score A = new Score(username,score);
 		data.add(A);
 	}
 

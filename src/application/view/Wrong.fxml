@@ -28,11 +28,6 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
                </children>
             </HBox>
          </children>
@@ -41,9 +36,14 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="269.0" layoutY="316.0" mnemonicParsing="false" onAction="#listenRecording" text="Listen">
+      <Button layoutX="250.0" layoutY="325.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="33.0" prefWidth="106.0" text="Listen">
          <font>
-            <Font size="23.0" />
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
+         <font>
+            <Font size="21.0" />
          </font>
       </Button>
    </children>

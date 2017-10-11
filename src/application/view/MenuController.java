@@ -25,11 +25,16 @@ public class MenuController extends AbstractController  {
 		changeSceneToRecord(event);
 	}
 
-	// Change scene to record scene when button is pushed
-	public void changeSceneToRecord(ActionEvent event) throws IOException{
+	
+	
+	public void changeSceneToUsername(ActionEvent event) throws IOException{
 		changeScene(event,"Record");
 	}
-	
+	// Change scene to record scene when button is pushed
+	public void changeSceneToRecord(ActionEvent event) throws IOException{
+		changeScene(event,"Username_Scene");
+	}
+
 	public void changeSceneToInstructions(ActionEvent event) throws IOException{
 		changeScene(event,"Instructions");
 	}
@@ -38,8 +43,5 @@ public class MenuController extends AbstractController  {
 		changeScene(event,"scores");
 	}
 
-
-
-	
 
 }

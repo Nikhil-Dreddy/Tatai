@@ -19,9 +19,9 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="userAnsLabel" layoutX="281.0" layoutY="182.0" text="Label" textFill="#c60606">
+            <Label fx:id="userAnsLabel" layoutX="294.0" layoutY="190.0" text="Label" textFill="#c60606">
                <font>
-                  <Font size="29.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label layoutX="118.0" layoutY="227.0" text="The answer is">
@@ -29,14 +29,14 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="correctAnsLabel" layoutX="318.0" layoutY="226.0" text="Label" textFill="#12bc1e">
+            <Label fx:id="correctAnsLabel" layoutX="319.0" layoutY="232.0" text="Label" textFill="#12bc1e">
                <font>
-                  <Font size="31.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="225.0" layoutY="288.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Question" />
+            <Button layoutX="214.0" layoutY="289.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Question" />
             <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit" />
-            <Button layoutX="229.0" layoutY="347.0" mnemonicParsing="false" onAction="#listenRecording" text="Listen" />
+            <Button layoutX="234.0" layoutY="328.0" mnemonicParsing="false" onAction="#listenRecording" text="Listen" />
          </children>
       </AnchorPane>
    </children>
