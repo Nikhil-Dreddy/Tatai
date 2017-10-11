@@ -58,9 +58,9 @@ public class NumberGenerator {
 		return "";
 	}
 	
-	public String getMaoriNum(){
-		int secondDigit = num % 10;
-		int firstDigit = (num/10) % 10;
+	public String getMaoriNum(int i){
+		int secondDigit = i % 10;
+		int firstDigit = (i/10) % 10;
 		
 		if (firstDigit == 0){
 			return digitToMaori(secondDigit);

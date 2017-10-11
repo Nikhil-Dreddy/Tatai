@@ -120,7 +120,7 @@ public class RecordController extends AbstractController implements Initializabl
 			 * if words is not empty
 			 */		
 			userAns = String.join(" ", words);			
-			String maoriWord = numberGenerator.getMaoriNum();
+			String maoriWord = numberGenerator.getMaoriNum(numberGenerator.getNum());
 
 			// user is correct
 			if(userAns.equalsIgnoreCase(maoriWord)) {
