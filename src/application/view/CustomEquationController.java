@@ -10,6 +10,8 @@ import javax.script.ScriptException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
 public class CustomEquationController extends AbstractController{
@@ -17,7 +19,6 @@ public class CustomEquationController extends AbstractController{
 	@FXML
 	private Label label = new Label();
 	
-	private Object result;
 
 	
 	public void quit(ActionEvent event) throws IOException{
@@ -88,20 +89,37 @@ public class CustomEquationController extends AbstractController{
     }
 	
 	public void submit() {
+		Object result = null;
+
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
 		try {
 			 result = engine.eval(label.getText().replace("x", "*"));
-		} catch (ScriptException e) {}
-		
-		if (result == null) {
-			// if equation sucks...
-			System.out.println("wtf nikil stop getting carried");
+		} catch (ScriptException e) {}		
+		if (result == null || result.equals("Infinity")) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erroe");
+			alert.setHeaderText("Invalid Equation");
+			alert.setContentText("Please write a valid equation");
+			alert.showAndWait();
+		} else if (Double.valueOf(result.toString()) != Math.floor(Double.valueOf(result.toString()))){
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Answer contains decimals");
+			alert.setContentText("Answer must be a whole number");
+			alert.showAndWait();
+		} else if (99<(Integer) result || 1>(Integer) result) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Answer out of bounds");
+			alert.setContentText("Make sure answer is between 1~99 inclusive");
+			alert.showAndWait();
 		} else {
 			System.out.println(result);
-			saveEq(result.toString());
-			label.setText("");
+			saveEq(label.getText());
+			result = null;
 		}
+		label.setText("");
 	}
 	
 	public void saveEq(String s) {
@@ -109,7 +127,7 @@ public class CustomEquationController extends AbstractController{
 			
 			try{
 				// Create file 
-				FileWriter fstream = new FileWriter("customEq/"+System.currentTimeMillis() + "out.txt");
+				FileWriter fstream = new FileWriter("custom_equations/"+System.currentTimeMillis() + ".txt");
 				BufferedWriter out = new BufferedWriter(fstream);
 				out.write(s);
 				//Close the output stream

@@ -31,7 +31,7 @@ public class MainApp extends Application {
 	}
 
 	public static void main(String[] args){
-		new File("hello").mkdir();		
+		new File("custom_equations").mkdir();		
 		launch(args);
 	}
 	
