@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
 //import com.sun.javafx.application.LauncherImpl;
@@ -30,7 +31,7 @@ public class MainApp extends Application {
 	}
 
 	public static void main(String[] args){
-		
+		new File("hello").mkdir();		
 		launch(args);
 	}
 	

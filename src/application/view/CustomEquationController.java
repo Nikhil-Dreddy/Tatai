@@ -1,5 +1,7 @@
 package application.view;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.script.ScriptEngine;
@@ -97,7 +99,24 @@ public class CustomEquationController extends AbstractController{
 			System.out.println("wtf nikil stop getting carried");
 		} else {
 			System.out.println(result);
+			saveEq(result.toString());
 			label.setText("");
+		}
+	}
+	
+	public void saveEq(String s) {
+		{
+			
+			try{
+				// Create file 
+				FileWriter fstream = new FileWriter("customEq/"+System.currentTimeMillis() + "out.txt");
+				BufferedWriter out = new BufferedWriter(fstream);
+				out.write(s);
+				//Close the output stream
+				out.close();
+			}catch (Exception e){//Catch exception if any
+				System.err.println("Error: " + e.getMessage());
+			}
 		}
 	}
 }
