@@ -8,5 +8,6 @@
       <Button layoutX="228.0" layoutY="194.0" mnemonicParsing="false" onAction="#equation" text="Equations" />
       <Button layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
       <Button layoutX="210.0" layoutY="250.0" mnemonicParsing="false" onAction="#customizeEq" text="Customize Equation" />
+      <Button layoutX="210.0" layoutY="299.0" mnemonicParsing="false" onAction="#viewCustomEq" text="View Custom Equations" />
    </children>
 </AnchorPane>
