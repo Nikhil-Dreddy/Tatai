@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PracticeNumbersController">
+   <children>
+      <Button layoutX="234.0" layoutY="85.0" mnemonicParsing="false" onAction="#easyButtonClicked" text="Easy" />
+      <Button layoutX="234.0" layoutY="173.0" mnemonicParsing="false" onAction="#hardButtonClicked" text="Hard" />
+      <Button layoutX="229.0" layoutY="221.0" mnemonicParsing="false" text="Custom" />
+      <Button layoutX="498.0" layoutY="346.0" mnemonicParsing="false" text="Help" />
+      <Button layoutX="35.0" layoutY="359.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+   </children>
+</AnchorPane>
