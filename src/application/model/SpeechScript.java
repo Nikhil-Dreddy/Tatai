@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import application.MainApp;
+import application.view.PraticeRecordController;
 import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -24,10 +25,14 @@ public class SpeechScript extends Task<Void> {
 	private ArrayList<String> words = new ArrayList<String>();
 	private ActionEvent event;
 	RecordController recordController = new RecordController();;
-	
+	PraticeRecordController praticeController = new PraticeRecordController();
 	public SpeechScript(RecordController rC) {
 		recordController = rC;
 	}
+	public SpeechScript(PraticeRecordController rC) {
+		praticeController = rC;
+	}
+
 
 	// records voice					
 

@@ -9,22 +9,22 @@
    <children>
       <AnchorPane layoutX="83.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="118.0" layoutY="88.0" text="Wrong again">
+            <Label layoutX="99.0" layoutY="88.0" text="Wrong again">
                <font>
                   <Font size="59.0" />
                </font>
             </Label>
-            <Label layoutX="137.0" layoutY="184.0" text="You said">
+            <Label layoutX="137.0" layoutY="184.0" text="You said:">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="userAnsLabel" layoutX="294.0" layoutY="190.0" text="Label" textFill="#c60606">
+            <Label fx:id="userAnsLabel" layoutX="282.0" layoutY="190.0" text="Label" textFill="#c60606">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="227.0" text="The answer is">
+            <Label layoutX="118.0" layoutY="227.0" text="The answer is:">
                <font>
                   <Font size="25.0" />
                </font>
