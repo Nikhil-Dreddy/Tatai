@@ -89,7 +89,7 @@ public class CustomEquationController extends AbstractController{
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
 		try {
-			 result = engine.eval(label.getText());
+			 result = engine.eval(label.getText().replace("x", "*"));
 		} catch (ScriptException e) {}
 		
 		if (result == null) {
