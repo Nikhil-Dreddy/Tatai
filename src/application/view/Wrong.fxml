@@ -26,7 +26,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
+      <Button fx:id="Continue" layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
          <font>
             <Font size="21.0" />
          </font>

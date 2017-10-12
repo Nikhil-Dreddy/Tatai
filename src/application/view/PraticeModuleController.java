@@ -15,7 +15,8 @@ public class PraticeModuleController extends AbstractController {
 	}
 	
 	public void changeSceneToPraticeRecord(ActionEvent event) throws IOException{
-		changeScene(event,"Menu");
+		this.praticeNumber = Integer.parseInt(Number.getText());
+		changeScene(event,"PraticeRecord");
 	}
 	
 	public int getpraticeNumber() {

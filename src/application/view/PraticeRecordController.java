@@ -29,17 +29,12 @@ public class PraticeRecordController extends AbstractController implements Initi
 	private enum Status{
 		NEW_QUESTION, NO_ANS, WRONG_ANS
 	}
-	
+
 	private enum QType{
 		QUESTION, EQUATION
 	}
 
 	ListenerWorker worker = new ListenerWorker();
-	NumberGenerator numberGenerator = new NumberGenerator();
-	Equation equation = new Equation();
-
-	private static int questionNo = 9;
-	private static int score = 0;
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
 
@@ -61,29 +56,17 @@ public class PraticeRecordController extends AbstractController implements Initi
 	private Button listenButton = new Button();
 	@FXML
 	private Button submitButton = new Button();
+	public static boolean praticeMode = false;
+	private NumberGenerator A = new NumberGenerator();
+	private PraticeModuleController B = new PraticeModuleController();
 
 	private void setStatus(Status s){
 		status = s;
 	}
 
 	public void setNumLabel(){
-		if (qType == QType.QUESTION) {
-			// if user is not on last try, then get random number
-			// or else just use number that they got wrong so they can try again
-			if (status == Status.NEW_QUESTION){
-				numberGenerator.generateNum();
-			}
-			numLabel.setText(String.valueOf(numberGenerator.getNum()));
-		} else if (qType == QType.EQUATION) {
-			if (status == Status.NEW_QUESTION){
-				// generate new equation
-				equation.generateExpression();
-			}
-			numLabel.setText(equation.getEquation());
-			numLabel.setFont(new Font(30));
-		}
-		speech = new SpeechScript(this);
-		questionLabel.setText(score+"/"+questionNo);	
+		numLabel.setText(""+B.getpraticeNumber());
+		speech = new SpeechScript(this);	
 		listenButton.setDisable(true);
 		submitButton.setDisable(true);
 	}
@@ -107,7 +90,6 @@ public class PraticeRecordController extends AbstractController implements Initi
 	public void submit(ActionEvent event) throws IOException{
 		speech.readAnswerFile();
 		words = speech.getWords();
-
 		if(words.isEmpty()){
 			setStatus(Status.NO_ANS);
 			userAns = "";
@@ -130,32 +112,15 @@ public class PraticeRecordController extends AbstractController implements Initi
 			 */		
 			userAns = String.join(" ", words);			
 			String maoriWord = "";
-			if (qType == QType.QUESTION) {
-				maoriWord = numberGenerator.getMaoriNum(numberGenerator.getNum());
-			} else if (qType == QType.EQUATION) {
-				maoriWord = numberGenerator.getMaoriNum(equation.getAns());
-			}
-
+			maoriWord = A.getMaoriNum(B.getpraticeNumber());
 			// user is correct
 			if(userAns.equalsIgnoreCase(maoriWord)) {
-				score++;
-				questionNo++;
 				setStatus(Status.NEW_QUESTION);
+				this.praticeMode = true;
 				changeScene(event, "Correct");
 			} else {
-				// user is wrong
-				if (status != Status.WRONG_ANS){
-					// if first time wrong, let them try again
-					setStatus(Status.WRONG_ANS);						
-					changeScene(event, "Wrong");
-				} else if(status == Status.WRONG_ANS) {
-					// user gets question wrong again
-					// skip to next question
-					setStatus(Status.NEW_QUESTION);	
-					WrongAgainController wrongAgainController = new WrongAgainController();
-					wrongAgainController.setCorrectAns(maoriWord);
-					changeScene(event, "WrongAgain");
-				}
+				this.praticeMode = true;
+				changeScene(event, "Wrong");
 			}
 		}
 

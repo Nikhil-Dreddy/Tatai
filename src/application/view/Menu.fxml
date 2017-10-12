@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="easyButton" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MenuController">
+<AnchorPane fx:id="easyButton" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MenuController">
    <children>
       <Label layoutX="5.0" layoutY="5.0" prefHeight="68.0" prefWidth="393.0" text="Welcome to Tātai!" textAlignment="CENTER">
          <font>
@@ -23,5 +23,6 @@
       </Button>
       <Button layoutX="54.0" layoutY="73.0" mnemonicParsing="false" onAction="#changeSceneToPracticeNumbers" text="Practice your numbers" />
       <Button layoutX="54.0" layoutY="110.0" mnemonicParsing="false" onAction="#changeSceneToPracticeEquations" text="Practice your equations" />
+      <Button layoutX="106.0" layoutY="145.0" mnemonicParsing="false" onAction="#changeSceneToPracticeModule" text="Pratice Module" />
    </children>
 </AnchorPane>

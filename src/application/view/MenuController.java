@@ -37,6 +37,10 @@ public class MenuController extends AbstractController  {
 		changeScene(event,"PracticeNumbers");
 	}
 	
+	public void changeSceneToPracticeModule(ActionEvent event) throws IOException{
+		changeScene(event,"PraticeModule");
+	}
+	
 	public void changeSceneToPracticeEquations(ActionEvent event) throws IOException{
 		changeScene(event,"PracticeEquations");
 	}
