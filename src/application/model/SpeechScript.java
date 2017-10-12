@@ -94,6 +94,7 @@ public class SpeechScript extends Task<Void> {
 	protected void succeeded() {
 		super.succeeded();
 		recordController.makeButtonsVisible();
+		praticeController.makeButtonsVisible();
 	}
 
 	@Override
