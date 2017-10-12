@@ -3,6 +3,7 @@ package application.view;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -19,10 +20,12 @@ public class CustomEquationController extends AbstractController{
 	@FXML
 	private Label label = new Label();
 	
-
+	public void viewEquations(ActionEvent event) throws IOException{
+		changeScene(event,"ViewCustomEquations");
+	}
 	
-	public void quit(ActionEvent event) throws IOException{
-		changeScene(event,"Menu");
+	public void back(ActionEvent event) throws IOException{
+		changeScene(event,"PracticeEquations");
 	}	
 	
 	public void one() {
@@ -116,23 +119,24 @@ public class CustomEquationController extends AbstractController{
 			alert.showAndWait();
 		} else {
 			saveEq(label.getText());
-			result = null;
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Succesfully created the following equation:");
+			alert.setContentText(label.getText());
+
+			alert.showAndWait();
 		}
 		label.setText("");
 	}
 	
 	public void saveEq(String s) {
 		{
-			
-			try{
-				// Create file 
-				FileWriter fstream = new FileWriter("custom_equations/"+System.currentTimeMillis() + ".txt");
-				BufferedWriter out = new BufferedWriter(fstream);
-				out.write(s);
-				//Close the output stream
-				out.close();
-			}catch (Exception e){//Catch exception if any
-				System.err.println("Error: " + e.getMessage());
+			try {
+				Writer output;
+				output = new BufferedWriter(new FileWriter("custom_equations.txt", true));
+				output.append(s+"\n");
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}

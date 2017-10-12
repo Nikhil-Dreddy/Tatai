@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 //import com.sun.javafx.application.LauncherImpl;
@@ -31,7 +32,13 @@ public class MainApp extends Application {
 	}
 
 	public static void main(String[] args){
-		new File("custom_equations").mkdir();		
+		File file = new File("custom_equations.txt");
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+		
 		launch(args);
 	}
 	
