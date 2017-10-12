@@ -115,7 +115,6 @@ public class CustomEquationController extends AbstractController{
 			alert.setContentText("Make sure answer is between 1~99 inclusive");
 			alert.showAndWait();
 		} else {
-			System.out.println(result);
 			saveEq(label.getText());
 			result = null;
 		}
