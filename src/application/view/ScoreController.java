@@ -58,8 +58,7 @@ public class ScoreController extends AbstractController implements Initializable
 		
 		for(int i =0;i<scores.size();i++) {
 			String s = scores.get(i);
-			String[] words = s.split("\\s+");
-			
+			String[] words = s.split("\\s+");		
 			model.addNewScore(words[0], Integer.parseInt(words[1]));
 		}
 
