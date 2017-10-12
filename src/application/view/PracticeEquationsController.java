@@ -25,4 +25,8 @@ public class PracticeEquationsController extends AbstractController{
 	public void quit(ActionEvent event) throws IOException{
 		changeScene(event,"Menu");
 	}
+	
+	public void customizeEq(ActionEvent event) throws IOException{
+		changeScene(event,"CustomEquation");
+	}
 }
