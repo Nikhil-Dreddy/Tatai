@@ -24,18 +24,9 @@ import javafx.util.Duration;
 
 public class MenuController extends AbstractController  {
 
-	private Object result;
-
 	public void changeSceneToInstructions(ActionEvent event) throws IOException{
-		ScriptEngineManager manager = new ScriptEngineManager();
-		ScriptEngine engine = manager.getEngineByName("js");
-		try {
-			 result = engine.eval("4*5");
-		} catch (ScriptException e) {
-			e.printStackTrace();
-		}
-		System.out.println(result);
-//		changeScene(event,"Instructions");
+		
+		changeScene(event,"Instructions");
 	}
 
 	public void changeSceneToScore(ActionEvent event) throws IOException{

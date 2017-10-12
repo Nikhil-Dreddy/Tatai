@@ -29,4 +29,4 @@ public class PracticeEquationsController extends AbstractController{
 	public void customizeEq(ActionEvent event) throws IOException{
 		changeScene(event,"CustomEquation");
 	}
-}
+} 
