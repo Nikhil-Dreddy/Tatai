@@ -47,7 +47,6 @@ public class ViewCustomEquationsController extends AbstractController implements
 
 
 				while((currentLine = reader.readLine()) != null) {
-					// trim newline when comparing with lineToRemove
 					String trimmedLine = currentLine.trim();
 					if(trimmedLine.equals(eq)) continue;
 					writer.write(currentLine + System.getProperty("line.separator"));

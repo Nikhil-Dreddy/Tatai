@@ -1,6 +1,10 @@
 package application.view;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -117,15 +121,46 @@ public class CustomEquationController extends AbstractController{
 			alert.setHeaderText("Answer out of bounds");
 			alert.setContentText("Make sure answer is between 1~99 inclusive");
 			alert.showAndWait();
+		} else if (equationExists(label.getText())) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Error");
+			alert.setHeaderText("Equation already exists");
+			alert.setContentText("Please enter a new equation");
+			alert.showAndWait();
 		} else {
 			saveEq(label.getText());
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText("Succesfully created the following equation:");
 			alert.setContentText(label.getText());
-
 			alert.showAndWait();
 		}
 		label.setText("");
+	}
+	
+	public boolean equationExists(String s) {
+
+		File inputFile = new File("custom_equations.txt");
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+			String currentLine;
+
+			while((currentLine = reader.readLine()) != null) {
+				String trimmedLine = currentLine.trim();
+				if(trimmedLine.equals(s)) {
+					reader.close(); 
+					return true;
+				}
+			}
+			reader.close(); 
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+
 	}
 	
 	public void saveEq(String s) {
