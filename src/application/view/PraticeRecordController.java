@@ -128,6 +128,7 @@ public class PraticeRecordController extends AbstractController implements Initi
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
+		this.praticeMode = false;
 		changeScene(event,"Menu");
 		setStatus(Status.NEW_QUESTION);
 	}

@@ -79,6 +79,7 @@ public class ResultController extends AbstractController implements Initializabl
 			e.printStackTrace();
 		}
 	}
+	
 	public void motivation() {
 		this.addPreviousScores();
 		ScoreModel model = new ScoreModel();
