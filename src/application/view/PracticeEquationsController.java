@@ -14,6 +14,10 @@ public class PracticeEquationsController extends AbstractController{
 	}
 	
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
+		CorrectController cc = new CorrectController();
+		cc.setMaxQ(10);
+		WrongAgainController wac = new WrongAgainController();
+		wac.setMaxQ(10);
 		changeScene(event,"Record");
 	}
 	
@@ -23,6 +27,8 @@ public class PracticeEquationsController extends AbstractController{
 
 	
 	public void viewCustomEq(ActionEvent event) throws IOException{
+		
 		changeScene(event,"CustomEquations");
+		
 	}
 } 

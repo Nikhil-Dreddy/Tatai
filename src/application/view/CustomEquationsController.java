@@ -11,6 +11,7 @@ import java.io.Writer;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -47,19 +48,62 @@ public class CustomEquationsController extends AbstractController implements Ini
 
 	private TreeItem<String> root = new TreeItem<>("root");
 
-
+	private static ArrayList<String> equationList;
 	private final String customQFileName = "custom_questionaires/";
 
 	public void back(ActionEvent event) throws IOException{
 		changeScene(event,"PracticeEquations");
 	}
 
-	public void play() {
-		
+	public void play(ActionEvent event) throws IOException{
+		equationList = new ArrayList<String>();
+
+		try {
+			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+			if(item != null) {
+				File file;
+				if (item.getParent().equals(root)) {
+					file = new File(customQFileName+item.getValue());
+				} else {
+					file = new File(customQFileName+item.getParent().getValue());
+				}
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				br = new BufferedReader(new FileReader(file));
+				String line = null;  
+				while ((line = br.readLine()) != null){  
+					equationList.add(line);
+				} 
+				if (equationList.size() != 0) {
+					RecordController rc = new RecordController();
+					rc.setQTypeCustom();
+					CorrectController cc = new CorrectController();
+					cc.setMaxQ(equationList.size());
+					WrongAgainController wac = new WrongAgainController();
+					wac.setMaxQ(equationList.size());
+					changeScene(event, "Record");
+				} else {
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Warning Dialog");
+					alert.setHeaderText("Questionaire contains no equations");
+					alert.setContentText("Please add questions to the questionaire");
+					alert.showAndWait();
+
+				}
+			} 
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
+	public String getEquation() {
+		RecordController rc = new RecordController();
+		return equationList.get(rc.getQno());
+	}
+
 	public void delete() {
-		
+
 		TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
 		if(item != null) {
 			if (item.getParent().equals(root)) {
@@ -104,10 +148,6 @@ public class CustomEquationsController extends AbstractController implements Ini
 		}
 	}
 
-	public void createEquation(ActionEvent event) throws IOException {
-		changeScene(event,"CustomEquation");
-	}
-
 	public void addEquation() {
 		Object result = null;
 		String newEq = addEqTextField.getText();
@@ -142,6 +182,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 			alert.setContentText("Please enter a new equation");
 			alert.showAndWait();
 		} else {
+			System.out.println(result);
 			saveEq(newEq);
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText("Succesfully created the following equation:");

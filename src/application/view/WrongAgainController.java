@@ -20,8 +20,13 @@ public class WrongAgainController extends AbstractController implements Initiali
 	@FXML
 	private Label correctAnsLabel;
 	
+	private static int maxQ;
+	
 	private static String correctAns;
 
+	public void setMaxQ(int i) {
+		maxQ = i;
+	}
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
 		rC.resetQno();
@@ -31,7 +36,7 @@ public class WrongAgainController extends AbstractController implements Initiali
 	
 	// for the next question botton
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
-		if(rC.getQno() == 10) {
+		if(rC.getQno() == maxQ) {
 			changeScene(event,"Result");
 			rC.resetQno();
 			rC.resetScore();

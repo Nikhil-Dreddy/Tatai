@@ -38,7 +38,7 @@ public class RecordController extends AbstractController implements Initializabl
 	NumberGenerator numberGenerator = new NumberGenerator();
 	Equation equation = new Equation();
 
-	private static int questionNo = 9;
+	private static int questionNo = 0;
 	private static int score = 0;
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
@@ -82,12 +82,9 @@ public class RecordController extends AbstractController implements Initializabl
 			numLabel.setText(equation.getEquation());
 			numLabel.setFont(new Font(30));
 		} else if (qType == QType.CUSTOM) {
-			if (status == Status.NEW_QUESTION){
-				// get custom equations
-//				equation.generateExpression();
-			}
-//			numLabel.setText(equation.getEquation());
-//			numLabel.setFont(new Font(30));
+			CustomEquationsController custEqCont = new CustomEquationsController();
+			numLabel.setText(custEqCont.getEquation());
+			numLabel.setFont(new Font(30));
 		}
 		speech = new SpeechScript(this);
 		questionLabel.setText(score+"/"+questionNo);	

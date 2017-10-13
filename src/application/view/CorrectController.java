@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 
 public class CorrectController extends AbstractController implements Initializable{
 
+	private static int maxQ;
 	private RecordController rC = new RecordController();
 	@FXML
 	private Button Continue;
@@ -20,6 +21,10 @@ public class CorrectController extends AbstractController implements Initializab
 		rC.resetScore();
 		changeScene(event,"Menu");
 	}
+	
+	public void setMaxQ(int i) {
+		maxQ = i;
+	}
 
 	// for the next number button
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
@@ -28,7 +33,7 @@ public class CorrectController extends AbstractController implements Initializab
 			changeScene(event,"PraticeModule");
 		}
 		else {
-			if(rC.getQno() == 10) {
+			if(rC.getQno() == maxQ) {
 				changeScene(event,"Result");
 				rC.resetQno();
 				rC.resetScore();
