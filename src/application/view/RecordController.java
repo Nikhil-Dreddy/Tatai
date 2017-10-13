@@ -31,7 +31,7 @@ public class RecordController extends AbstractController implements Initializabl
 	}
 	
 	private enum QType{
-		QUESTION, EQUATION
+		QUESTION, EQUATION, CUSTOM
 	}
 
 	ListenerWorker worker = new ListenerWorker();
@@ -81,6 +81,13 @@ public class RecordController extends AbstractController implements Initializabl
 			}
 			numLabel.setText(equation.getEquation());
 			numLabel.setFont(new Font(30));
+		} else if (qType == QType.CUSTOM) {
+			if (status == Status.NEW_QUESTION){
+				// get custom equations
+//				equation.generateExpression();
+			}
+//			numLabel.setText(equation.getEquation());
+//			numLabel.setFont(new Font(30));
 		}
 		speech = new SpeechScript(this);
 		questionLabel.setText(score+"/"+questionNo);	
@@ -223,5 +230,9 @@ public class RecordController extends AbstractController implements Initializabl
 	
 	public void setQTypeEquation() {
 		qType = QType.EQUATION;
+	}
+	
+	public void setQTypeCustom() {
+		qType = QType.CUSTOM;
 	}
 }

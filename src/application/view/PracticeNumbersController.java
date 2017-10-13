@@ -33,7 +33,7 @@ public class PracticeNumbersController extends AbstractController{
 		changeScene(event,"Record");
 	}
 	
-	public void quit(ActionEvent event) throws IOException{
+	public void back(ActionEvent event) throws IOException{
 		changeScene(event,"Menu");
 	}
 }

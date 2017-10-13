@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CustomEquationsController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Custom Questionaires" />
+      <Button layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="375.0" layoutY="136.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="375.0" layoutY="200.0" mnemonicParsing="false" onAction="#createQuestionList" text="Make QuestionList" />
+      <TextField fx:id="qNameTextField" layoutX="371.0" layoutY="250.0" />
+      <Button layoutX="404.0" layoutY="323.0" mnemonicParsing="false" onAction="#addEquation" text="Add" />
+      <TextField fx:id="addEqTextField" layoutX="371.0" layoutY="359.0" />
+      <TreeView fx:id="treeView" layoutX="14.0" layoutY="31.0" prefHeight="321.0" prefWidth="324.0" />
+      <Button layoutX="389.0" layoutY="75.0" mnemonicParsing="false" onAction="#play" text="Play" />
+   </children>
+</AnchorPane>

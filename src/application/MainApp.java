@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 public class MainApp extends Application {
 
 	private Stage primaryStage;
+	// ysa
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, InterruptedException {
@@ -37,6 +38,7 @@ public class MainApp extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
+		new File("custom_questionaires").mkdir();
 		
 		launch(args);
 	}

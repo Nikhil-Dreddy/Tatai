@@ -9,6 +9,6 @@
       <Button layoutX="234.0" layoutY="173.0" mnemonicParsing="false" onAction="#hardButtonClicked" text="Hard" />
       <Button layoutX="229.0" layoutY="221.0" mnemonicParsing="false" text="Custom" />
       <Button layoutX="498.0" layoutY="346.0" mnemonicParsing="false" text="Help" />
-      <Button layoutX="35.0" layoutY="359.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+      <Button layoutX="35.0" layoutY="359.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

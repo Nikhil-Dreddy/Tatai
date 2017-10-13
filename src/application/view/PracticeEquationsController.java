@@ -17,20 +17,12 @@ public class PracticeEquationsController extends AbstractController{
 		changeScene(event,"Record");
 	}
 	
-	
-	public void changeSceneToUsername(ActionEvent event) throws IOException{
-		changeScene(event,"Record");
-	}
-	
 	public void quit(ActionEvent event) throws IOException{
 		changeScene(event,"Menu");
 	}
-	
-	public void customizeEq(ActionEvent event) throws IOException{
-		changeScene(event,"CustomEquation");
-	}
+
 	
 	public void viewCustomEq(ActionEvent event) throws IOException{
-		changeScene(event,"ViewCustomEquations");
+		changeScene(event,"CustomEquations");
 	}
 } 
