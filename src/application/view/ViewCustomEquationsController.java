@@ -21,11 +21,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 public class ViewCustomEquationsController extends AbstractController implements Initializable{
 
 	@FXML
 	private ListView<String> listView;
+	
+	@FXML
+	private TreeView<String> treeView;
 	//	ObservableList<String> items = FXCollections.observableArrayList();
 
 	public void back(ActionEvent event) throws IOException{
@@ -93,5 +98,14 @@ public class ViewCustomEquationsController extends AbstractController implements
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		initializeListView();
+		intializeTreeView();
+	}
+
+	private void intializeTreeView() {
+		 TreeItem<String> root = new TreeItem<>("Root");
+		 TreeItem<String> itemChild = new TreeItem<>("Child");
+		 itemChild.setExpanded(false);
+		 root.getChildren().add(itemChild);
+	        treeView.setRoot(root);;
 	}
 }

@@ -3,15 +3,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ViewCustomEquationsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ViewCustomEquationsController">
    <children>
       <Label layoutX="100.0" layoutY="14.0" text="Custom Equations" />
-      <ListView fx:id="listView" layoutX="13.0" layoutY="39.0" prefHeight="310.0" prefWidth="574.0" />
+      <ListView fx:id="listView" layoutX="13.0" layoutY="39.0" prefHeight="310.0" prefWidth="234.0" />
       <Button layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#back" text="Back" />
       <Button layoutX="183.0" layoutY="359.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
       <Button layoutX="100.0" layoutY="359.0" mnemonicParsing="false" onAction="#add" text="Add" />
       <Button layoutX="406.0" layoutY="359.0" mnemonicParsing="false" onAction="#createQuestionList" text="Make QuestionList" />
+      <TreeView fx:id="treeView" editable="true" layoutX="331.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
