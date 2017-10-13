@@ -133,8 +133,9 @@ public class CustomEquationController extends AbstractController{
 			alert.setHeaderText("Succesfully created the following equation:");
 			alert.setContentText(label.getText());
 			alert.showAndWait();
+			label.setText("");
+
 		}
-		label.setText("");
 	}
 	
 	public boolean equationExists(String s) {
