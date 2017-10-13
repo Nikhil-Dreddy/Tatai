@@ -14,12 +14,12 @@ public class UsernameController extends AbstractController {
 	// Change scene to record scene when button is pushed
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
 		ScoreModel.username = usernameField.getText();
-		changeScene(event,"Record");
+		changeScene(event,"Menu");
 	}
 	
 	//Change scene to record scene when button is pushed
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
-		changeScene(event,"Menu");
+		System.exit(0);
 	}
 
 }

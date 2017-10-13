@@ -14,7 +14,7 @@ public class PracticeEquationsController extends AbstractController{
 	}
 	
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
-		changeScene(event,"Username_Scene");
+		changeScene(event,"Record");
 	}
 	
 	

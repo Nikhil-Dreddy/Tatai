@@ -45,6 +45,10 @@ public class MenuController extends AbstractController  {
 		changeScene(event,"PracticeEquations");
 	}
 	
+	public void changeSceneToLogIn(ActionEvent event) throws IOException{
+		changeScene(event,"Username_Scene");
+	}
+	
 
 
 }

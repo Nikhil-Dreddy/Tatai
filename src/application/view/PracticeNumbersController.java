@@ -25,7 +25,7 @@ public class PracticeNumbersController extends AbstractController{
 	
 	// Change scene to record scene when button is pushed
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
-		changeScene(event,"Username_Scene");
+		changeScene(event,"Record");
 	}
 	
 	
