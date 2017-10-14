@@ -66,10 +66,6 @@ public class ScoreController extends AbstractController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		if(!alreadyExecuted) {
-			addPreviousScores();
-		    alreadyExecuted = true;
-		};
 		Correct.setCellValueFactory(new PropertyValueFactory<Score, Integer>("correct"));
 		Wrong.setCellValueFactory(new PropertyValueFactory<Score, Integer>("wrong"));
 		Username.setCellValueFactory(new PropertyValueFactory<Score, String>("username"));

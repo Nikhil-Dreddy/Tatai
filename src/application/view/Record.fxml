@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
    <children>
       <Label fx:id="numLabel" alignment="CENTER" layoutX="183.0" layoutY="68.0" prefHeight="183.0" prefWidth="234.0" text="hi" textAlignment="CENTER">
          <font>
@@ -27,9 +27,9 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" text="Record">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" stylesheets="@../application.css" text="Record">
                <font>
-                  <Font size="24.0" />
+                  <Font size="23.0" />
                </font>
             </Button>
             <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submit" prefHeight="88.0" text="Submit">

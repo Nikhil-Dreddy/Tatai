@@ -5,23 +5,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="resultanchor" prefHeight="314.0" prefWidth="584.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ResultController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ResultController">
    <children>
-      <AnchorPane id="resultanchor2" layoutX="64.0" layoutY="26.0" prefHeight="283.0" prefWidth="466.0">
+      <AnchorPane id="resultanchor2" layoutX="64.0" layoutY="26.0" prefHeight="369.0" prefWidth="535.0">
          <children>
-            <Button id="menubutton2" fx:id="nextLevelButton" layoutX="170.0" layoutY="210.0" mnemonicParsing="false" onAction="#changeSceneToHard" prefHeight="44.0" prefWidth="108.0" text="Next Level" />
-            <Label layoutX="29.0" layoutY="23.0" text="Your Result:" textFill="WHITE">
+            <Button id="menubutton2" fx:id="nextLevelButton" layoutX="171.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeSceneToHard" prefHeight="44.0" prefWidth="108.0" text="Next Level" />
+            <Label layoutX="31.0" layoutY="114.0" text="Your Result:" textFill="#328a35">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="scoreLabel" layoutX="263.0" layoutY="30.0" prefHeight="30.0" prefWidth="189.0" text="/9" textFill="WHITE">
+            <Label fx:id="scoreLabel" layoutX="288.0" layoutY="123.0" prefHeight="30.0" prefWidth="189.0" text="/9" textFill="#4e832a">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button id="quitbutton" layoutX="8.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="37.0" prefWidth="81.0" text="Quit" textFill="WHITE" />
+      <Button id="quitbutton" layoutX="4.0" layoutY="349.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="37.0" prefWidth="81.0" text="Quit" textFill="WHITE" />
    </children>
 </AnchorPane>

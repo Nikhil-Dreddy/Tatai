@@ -81,7 +81,6 @@ public class ResultController extends AbstractController implements Initializabl
 	}
 	
 	public void motivation() {
-		this.addPreviousScores();
 		ScoreModel model = new ScoreModel();
 		int max = 0;
 		int highscore = 0;

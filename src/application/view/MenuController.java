@@ -22,7 +22,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class MenuController extends AbstractController  {
+public class MenuController extends AbstractController implements Initializable {
 
 	public void changeSceneToInstructions(ActionEvent event) throws IOException{
 		
@@ -47,6 +47,12 @@ public class MenuController extends AbstractController  {
 	
 	public void changeSceneToLogIn(ActionEvent event) throws IOException{
 		changeScene(event,"Username_Scene");
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		this.addPreviousScores();
+		
 	}
 	
 

@@ -19,7 +19,7 @@
       </Label>
 
       <TextField fx:id="usernameField" layoutX="60.0" layoutY="90.0" promptText="Username" />
-      <Button id="loginbutton" layoutX="209.0" layoutY="155.0" mnemonicParsing="false" onAction="#changeSceneToRecord" stylesheets="@../application.css" text="Continue" textFill="WHITE">
+      <Button id="loginbutton" layoutX="100.0" layoutY="155.0" mnemonicParsing="false" onAction="#changeSceneToRecord" stylesheets="@../application.css" text="Continue" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -39,7 +39,10 @@
             <Font size="12.0" />
          </font>
       </Button>
-      <Label layoutX="39.0" layoutY="124.0" text="*No Spaces allowed for username" textFill="#8a3131" />
+      <Label layoutX="48.0" layoutY="124.0" text="*No Spaces allowed for username" textFill="#ff5050">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
       <Separator layoutX="20.0" layoutY="60.0" prefHeight="6.0" prefWidth="278.0" />
    </children>
 </AnchorPane>

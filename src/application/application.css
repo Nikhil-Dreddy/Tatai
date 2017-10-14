@@ -1,7 +1,6 @@
 
 #anchor {
-	-fx-background-image: url("background.jpg");
-	
+	-fx-background-image: url("background3.jpg");
 }
 
 #correctanchor {
@@ -29,7 +28,7 @@
 }
 
 #menubutton {
-	-fx-background-color:#d6d5d4;
+	-fx-background-color:#b5e4f4;
 }
 
 #menubutton2 {
@@ -37,10 +36,16 @@
 }
 
 #resultanchor {
-	-fx-background-image: url("result.png");
+	-fx-background-image: url("background.png");
 }
 
-#resultanchor2 {
+#recordbutton {
+	-fx-background-image: url("mic.jpg");
+}
+#listenbutton {
+	
+}
+#sumbitbutton {
 	
 }
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
