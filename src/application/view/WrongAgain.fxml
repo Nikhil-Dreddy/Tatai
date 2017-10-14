@@ -7,29 +7,29 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongAgainController">
    <children>
-      <AnchorPane layoutX="83.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="wronganchor" layoutX="83.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="99.0" layoutY="88.0" text="Wrong again">
+            <Label id="wronglabel" layoutY="88.0" prefHeight="71.0" prefWidth="605.0" stylesheets="@../application.css" text="      Wrong again" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="59.0" />
                </font>
             </Label>
-            <Label layoutX="137.0" layoutY="184.0" text="You said:">
+            <Label layoutX="150.0" layoutY="186.0" text="You said:">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="userAnsLabel" layoutX="282.0" layoutY="190.0" text="Label" textFill="#c60606">
+            <Label fx:id="userAnsLabel" layoutX="276.0" layoutY="190.0" text="Label" textFill="#c60606">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="227.0" text="The answer is:">
+            <Label layoutX="103.0" layoutY="228.0" text="The answer is:">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="correctAnsLabel" layoutX="319.0" layoutY="232.0" text="Label" textFill="#12bc1e">
+            <Label fx:id="correctAnsLabel" layoutX="291.0" layoutY="233.0" text="Label" textFill="#12bc1e">
                <font>
                   <Font size="18.0" />
                </font>

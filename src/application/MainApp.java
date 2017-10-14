@@ -23,7 +23,6 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("Tatai!");
 
 		Parent root = FXMLLoader.load(getClass().getResource("view/Username_Scene.fxml"));
-
 		// Show the scene containing the root layout
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

@@ -1,6 +1,46 @@
 
+#anchor {
+	-fx-background-image: url("background.jpg");
+	
+}
 
-.anchor {
-    -fx-background-image:url('/Kliponious-green-tick.png');
+#correctanchor {
+	-fx-background-color:#f7f7f7;
+}
+
+#wronganchor {
+	-fx-background-color:#f7f7f7;
+}
+
+#wronglabel {
+	-fx-background-color:#db2d20;
+}
+
+#correctlabel {
+	-fx-background-color:#01a252;
+}
+
+#loginbutton {
+	-fx-background-color:#01a0e4;
+}
+
+#quitbutton {
+	-fx-background-color:#db2d20;
+}
+
+#menubutton {
+	-fx-background-color:#d6d5d4;
+}
+
+#menubutton2 {
+	-fx-background-color:#f7f7f7;
+}
+
+#resultanchor {
+	-fx-background-image: url("result.png");
+}
+
+#resultanchor2 {
+	
 }
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
