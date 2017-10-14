@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="wronganchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongController">
    <children>
-      <Button layoutX="9.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
+      <Button id="menubutton" layoutX="9.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="250.0" layoutY="325.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="33.0" prefWidth="106.0" text="Listen">
+      <Button id="menubutton2" layoutX="250.0" layoutY="325.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="33.0" prefWidth="106.0" text="Listen">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Continue" layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
+      <Button id="menubutton2" fx:id="Continue" layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
          <font>
             <Font size="21.0" />
          </font>
