@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PraticeModuleController">
    <children>
-      <AnchorPane layoutX="-145.0" layoutY="-156.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="anchor" layoutX="-145.0" layoutY="-156.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="Number" layoutX="200.0" layoutY="163.0" promptText="Whole numbers..">
                <font>
@@ -20,17 +20,17 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="21.0" layoutY="354.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
+            <Button id="menubutton" layoutX="21.0" layoutY="354.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button layoutX="242.0" layoutY="222.0" mnemonicParsing="false" onAction="#changeSceneToPraticeRecord" text="Continue">
+            <Button id="menubutton2" layoutX="242.0" layoutY="222.0" mnemonicParsing="false" onAction="#changeSceneToPraticeRecord" text="Continue">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Label layoutX="184.0" layoutY="200.0" text="*only whole numbers between 1-99 " textFill="#757373" />
+            <Label layoutX="184.0" layoutY="200.0" text="*only whole numbers between 1-99 " textFill="#f25757" />
          </children>
       </AnchorPane>
    </children>
