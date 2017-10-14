@@ -77,7 +77,7 @@ public class RecordController extends AbstractController implements Initializabl
 		} else if (qType == QType.EQUATION) {
 			if (status == Status.NEW_QUESTION){
 				// generate new equation
-				equation.generateExpression();
+				equation.generateEquation();
 			}
 			numLabel.setText(equation.getEquation());
 			numLabel.setFont(new Font(30));
