@@ -17,7 +17,7 @@ public class UsernameController extends AbstractController {
 	Alert alert = new Alert(AlertType.ERROR);
 	// Change scene to record scene when button is pushed
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
-		if(!usernameField.getText().contains(" ")) {
+		if(!usernameField.getText().contains(" ")&& !usernameField.getText().isEmpty()) {
 			ScoreModel.username = usernameField.getText();
 			changeScene(event,"Menu");
 		}
