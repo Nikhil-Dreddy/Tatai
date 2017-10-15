@@ -103,23 +103,23 @@ public class CustomEquationsController extends AbstractController implements Ini
 	}
 
 	public void delete() {
+		try {
+			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+			if(item != null) {
+				if (item.getParent().equals(root)) {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Confirmation Dialog");
+					alert.setHeaderText("Deleating Questionaire");
+					alert.setContentText("Are you sure you want to delete : "+item.getValue()+" ?");
+					Optional<ButtonType> result = alert.showAndWait();
+					if (result.get() == ButtonType.OK){
+						File file = new File(customQFileName+item.getValue());
+						file.delete();
+						boolean remove = item.getParent().getChildren().remove(item);
+					}
+				} else {
 
-		TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
-		if(item != null) {
-			if (item.getParent().equals(root)) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("Confirmation Dialog");
-				alert.setHeaderText("Deleating Questionaire");
-				alert.setContentText("Are you sure you want to delete : "+item.getValue()+" ?");
-				Optional<ButtonType> result = alert.showAndWait();
-				if (result.get() == ButtonType.OK){
-					File file = new File(customQFileName+item.getValue());
-					file.delete();
-					boolean remove = item.getParent().getChildren().remove(item);
-				}
-			} else {
 
-				try {
 
 					File inputFile = new File(customQFileName+item.getParent().getValue());
 					File tempFile = new File(customQFileName+"temp");
@@ -139,12 +139,14 @@ public class CustomEquationsController extends AbstractController implements Ini
 					boolean successful = tempFile.renameTo(inputFile);
 					boolean remove = item.getParent().getChildren().remove(item);
 
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+
 				}
 			}
+		} catch (FileNotFoundException e) {
+			System.out.println("hi");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -152,67 +154,83 @@ public class CustomEquationsController extends AbstractController implements Ini
 		Object result = null;
 		String newEq = addEqTextField.getText();
 
+		TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
-		try {
-			result = engine.eval(newEq.replace("x", "*"));
-		} catch (ScriptException e) {}		
-		if (result == null || result.equals("Infinity")) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erroe");
-			alert.setHeaderText("Invalid Equation");
-			alert.setContentText("Please write a valid equation");
-			alert.showAndWait();
-		} else if (Double.valueOf(result.toString()) != Math.floor(Double.valueOf(result.toString()))){
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error");
-			alert.setHeaderText("Answer contains decimals");
-			alert.setContentText("Answer must be a whole number");
-			alert.showAndWait();
-		} else if (99<(Integer) result || 1>(Integer) result) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error");
-			alert.setHeaderText("Answer out of bounds");
-			alert.setContentText("Make sure answer is between 1~99 inclusive");
-			alert.showAndWait();
-		} else if (equationExists(newEq)) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Error");
-			alert.setHeaderText("Equation already exists");
-			alert.setContentText("Please enter a new equation");
+
+		if (item == null) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("No questionaire chosen");
+			alert.setContentText("Please select the questionaire in which you want to add an equation");
 			alert.showAndWait();
 		} else {
-			System.out.println(result);
-			saveEq(newEq);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setHeaderText("Succesfully created the following equation:");
-			alert.setContentText(newEq);
-			alert.showAndWait();
-			addEqTextField.setText("");
-
-		}
-	}
-	public void saveEq(String s) {
-		{
 			try {
-				Writer output;
+				result = engine.eval(newEq.replace("x", "*"));
+			} catch (ScriptException e) {}		
+			if (result == null || result.equals("Infinity")) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erroe");
+				alert.setHeaderText("Invalid Equation");
+				alert.setContentText("Please write a valid equation");
+				alert.showAndWait();
+			} else if (Double.valueOf(result.toString()) != Math.floor(Double.valueOf(result.toString()))){
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Answer contains decimals");
+				alert.setContentText("Answer must be a whole number");
+				alert.showAndWait();
+			} else if (99<(Integer) result || 1>(Integer) result) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Answer out of bounds");
+				alert.setContentText("Make sure answer is between 1~99 inclusive");
+				alert.showAndWait();
+			} else if (equationExists(newEq)) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error");
+				alert.setHeaderText("Equation already exists");
+				alert.setContentText("Please enter a new equation");
+				alert.showAndWait();
+			} else {
+				System.out.println(result);
+				saveEq(newEq);
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Succesfully created the following equation:");
+				alert.setContentText(newEq);
+				alert.showAndWait();
+				addEqTextField.setText("");
 
-				TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
-				if (item.getParent().equals(root)) {
-					output = new BufferedWriter(new FileWriter(customQFileName+item.getValue(), true));
-					createBranch(s, item, null);
-				} else {
-					output = new BufferedWriter(new FileWriter(customQFileName+item.getParent().getValue(), true));
-					createBranch(s, item.getParent(), null);
-				}
-				output.append(s+"\n");
-				output.close();
-
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
 	}
+	public void saveEq(String s) {
+
+		try {
+			Writer output;
+
+			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+
+
+			if (item.getParent().equals(root)) {
+				output = new BufferedWriter(new FileWriter(customQFileName+item.getValue(), true));
+				createBranch(s, item, null);
+			} else {
+				output = new BufferedWriter(new FileWriter(customQFileName+item.getParent().getValue(), true));
+				createBranch(s, item.getParent(), null);
+			}
+			output.append(s+"\n");
+			output.close();
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
 
 	public boolean equationExists(String s) {
 		try {
