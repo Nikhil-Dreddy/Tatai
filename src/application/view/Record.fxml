@@ -6,10 +6,9 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
    <children>
-      <Label id="menubutton" fx:id="numLabel" alignment="CENTER" layoutX="-5.0" layoutY="68.0" prefHeight="183.0" prefWidth="609.0" text="hi" textAlignment="CENTER" textFill="#462424">
+      <Label id="record" fx:id="numLabel" alignment="CENTER" layoutX="-5.0" layoutY="68.0" prefHeight="183.0" prefWidth="609.0" text="hi" textAlignment="CENTER" textFill="#462424">
          <font>
             <Font size="96.0" />
          </font></Label>
