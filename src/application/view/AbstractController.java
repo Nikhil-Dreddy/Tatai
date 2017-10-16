@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import application.model.ScoreModel;
@@ -29,7 +31,7 @@ public abstract class AbstractController {
 	}
 	public void addPreviousScores() {
 	 ScoreModel model = new ScoreModel();
-		File score = new File(ResultController.dir+"/src/application/view/scores");
+		File score = new File("scores.txt");
 		BufferedReader reader;
 		ArrayList<String> scores = new ArrayList<String>();
 		try {

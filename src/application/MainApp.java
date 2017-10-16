@@ -38,7 +38,13 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 		new File("custom_questionaires").mkdir();
-		
+		File yourFile = new File("scores.txt");
+		try {
+			yourFile.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 	

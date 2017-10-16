@@ -38,7 +38,7 @@ public class ScoreController extends AbstractController implements Initializable
 	}
 
 	public void addPreviousScores() {
-		File score = new File(ResultController.dir+"/src/application/view/scores");
+		File score = new File("scores.txt");
 		BufferedReader reader;
 		ArrayList<String> scores = new ArrayList<String>();
 		try {

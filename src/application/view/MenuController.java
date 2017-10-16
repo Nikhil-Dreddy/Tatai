@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MenuController extends AbstractController implements Initializable {
+	
+	private static boolean loadedStats;
 
 	public void changeSceneToInstructions(ActionEvent event) throws IOException{
 		
@@ -51,8 +53,10 @@ public class MenuController extends AbstractController implements Initializable 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if(!this.loadedStats) {
+			this.loadedStats = true;
 		this.addPreviousScores();
-		
+		}
 	}
 	
 

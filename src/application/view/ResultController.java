@@ -68,7 +68,7 @@ public class ResultController extends AbstractController implements Initializabl
 	public void saveScore() {
 		File scores;
 		try {
-			scores = new File(dir+"/src/application/view/scores");
+			scores = new File("scores.txt");
 			BufferedWriter output;
 			output = new BufferedWriter(new FileWriter(scores, true));
 			output.newLine();
