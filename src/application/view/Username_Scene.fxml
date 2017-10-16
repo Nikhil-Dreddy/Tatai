@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="wronganchor" prefHeight="250.0" prefWidth="300.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.UsernameController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.UsernameController">
    <children>
-      <Label layoutX="20.0" layoutY="30.0" text="User Login">
+      <Label layoutX="135.0" layoutY="125.0" text="User Login">
          <font>
-            <Font size="24.0" />
+            <Font name="Ubuntu Mono" size="33.0" />
          </font>
       </Label>
 
-      <TextField fx:id="usernameField" layoutX="60.0" layoutY="90.0" promptText="Username" />
-      <Button id="loginbutton" layoutX="100.0" layoutY="155.0" mnemonicParsing="false" onAction="#changeSceneToRecord" stylesheets="@../application.css" text="Continue" textFill="WHITE">
+      <TextField fx:id="usernameField" layoutX="215.0" layoutY="181.0" promptText="Username" />
+      <Button id="loginbutton" layoutX="254.0" layoutY="264.0" mnemonicParsing="false" onAction="#changeSceneToRecord" stylesheets="@../application.css" text="Continue" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,15 +34,20 @@
             </Lighting>
          </effect>
       </Button>
-      <Button id="quitbutton" layoutX="3.0" layoutY="223.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="16.0" prefWidth="54.0" stylesheets="@../application.css" text="Quit" textFill="#fff2f2">
+      <Button id="quitbutton" layoutX="15.0" layoutY="357.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="26.0" prefWidth="65.0" stylesheets="@../application.css" text="Quit" textFill="#fff2f2">
          <font>
             <Font size="12.0" />
          </font>
       </Button>
-      <Label layoutX="48.0" layoutY="124.0" text="*No Spaces allowed for username" textFill="#ff5050">
+      <Label layoutX="207.0" layoutY="217.0" text="*No Spaces allowed for username" textFill="#ff5050">
          <font>
             <Font size="11.0" />
          </font></Label>
-      <Separator layoutX="20.0" layoutY="60.0" prefHeight="6.0" prefWidth="278.0" />
+      <Separator layoutX="128.0" layoutY="153.0" prefHeight="14.0" prefWidth="457.0" />
+      <Label layoutX="8.0" layoutY="13.0" text="Welcome to Tātai!">
+         <font>
+            <Font name="Ubuntu Mono" size="53.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
