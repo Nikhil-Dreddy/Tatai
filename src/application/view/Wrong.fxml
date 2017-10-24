@@ -4,36 +4,41 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongController">
    <children>
-      <Button id="menubutton" layoutX="9.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
+      <Button id="quitbutton" layoutX="9.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" stylesheets="@application.css" text="Quit">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button id="menubutton2" layoutX="250.0" layoutY="325.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="33.0" prefWidth="106.0" text="Listen">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button id="menubutton2" fx:id="Continue" layoutX="236.0" layoutY="275.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
-      <Label layoutX="91.0" layoutY="209.0" prefHeight="40.0" prefWidth="159.0" text="You said: ">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="wrongAns" layoutX="250.0" layoutY="214.0" text="Label" textFill="RED">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label id="wronglabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="-5.0" layoutY="94.0" prefHeight="94.0" prefWidth="607.0" stylesheets="@../application.css" text="Wrong" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
+      <AnchorPane id="menuscheme1" layoutY="45.0" prefHeight="297.0" prefWidth="610.0" stylesheets="@application.css">
+         <children>
+            <Label id="wronglabel" alignment="CENTER" contentDisplay="RIGHT" layoutY="30.0" prefHeight="94.0" prefWidth="610.0" stylesheets="@../application.css" text="Wrong" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="wrongAns" layoutX="271.0" layoutY="145.0" text="Label" textFill="#ff3700">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="106.0" layoutY="140.0" prefHeight="40.0" prefWidth="159.0" text="You said: " textFill="#bdc7c1">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button id="menuscheme2" layoutX="228.0" layoutY="250.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="33.0" prefWidth="106.0" text="Listen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="menuscheme2" fx:id="Continue" layoutX="215.0" layoutY="193.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Try Again">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

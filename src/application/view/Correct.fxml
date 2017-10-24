@@ -5,23 +5,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CorrectController">
    <children>
-      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
+      <Button id="quitbutton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" stylesheets="@application.css" text="Quit">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Continue" layoutX="216.0" layoutY="251.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Number">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
-      <Label id="correctlabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="-1.0" layoutY="142.0" prefHeight="94.0" prefWidth="600.0" stylesheets="@../application.css" text="Correct" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
+      <AnchorPane id="menuscheme1" layoutY="52.0" prefHeight="279.0" prefWidth="592.0" stylesheets="@application.css">
+         <children>
+            <Button id="menuscheme2" fx:id="Continue" layoutX="189.0" layoutY="176.0" mnemonicParsing="false" onAction="#changeSceneToRecord" text="Next Number">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Label id="correctlabel" alignment="CENTER" contentDisplay="RIGHT" layoutY="35.0" prefHeight="94.0" prefWidth="600.0" stylesheets="@../application.css" text="Correct" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

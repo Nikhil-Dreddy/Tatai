@@ -4,47 +4,54 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.WrongAgainController">
    <children>
       <AnchorPane id="anchor" layoutX="83.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label id="wronglabel" layoutY="88.0" prefHeight="71.0" prefWidth="605.0" stylesheets="@../application.css" text="      Wrong again" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="59.0" />
-               </font>
-            </Label>
-            <Label layoutX="150.0" layoutY="186.0" text="You said:">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="userAnsLabel" layoutX="276.0" layoutY="190.0" text="Label" textFill="#c60606">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="103.0" layoutY="228.0" text="The answer is:">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="correctAnsLabel" layoutX="291.0" layoutY="233.0" text="Label" textFill="#12bc1e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button id="menubutton2" layoutX="196.0" layoutY="278.0" mnemonicParsing="false" onAction="#changeSceneToRecord" prefHeight="38.0" prefWidth="182.0" text="Next Question">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
-            <Button id="menubutton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="30.0" prefWidth="65.0" text="Quit">
+            <Button id="quitbutton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="30.0" prefWidth="65.0" stylesheets="@application.css" text="Quit">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Button id="menubutton2" layoutX="234.0" layoutY="328.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="39.0" prefWidth="88.0" text="Listen">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
+            <AnchorPane id="menuscheme1" layoutX="-1.0" layoutY="48.0" prefHeight="292.0" prefWidth="605.0" stylesheets="@application.css">
+               <children>
+                  <Label id="wronglabel" layoutY="28.0" prefHeight="78.0" prefWidth="605.0" stylesheets="@../application.css" text="      Wrong again" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="59.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="131.0" layoutY="118.0" text="You said:" textFill="#bdc7c1">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="121.0" layoutY="156.0" text="The answer is:" textFill="#bdc7c1">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="userAnsLabel" layoutX="265.0" layoutY="123.0" text="Label" textFill="#c60606">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="correctAnsLabel" layoutX="319.0" layoutY="162.0" text="Label" textFill="#12bc1e">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button id="menuscheme2" layoutX="246.0" layoutY="250.0" mnemonicParsing="false" onAction="#listenRecording" prefHeight="29.0" prefWidth="88.0" text="Listen">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button id="menuscheme2" layoutX="204.0" layoutY="206.0" mnemonicParsing="false" onAction="#changeSceneToRecord" prefHeight="21.0" prefWidth="169.0" text="Next Question">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

@@ -7,21 +7,24 @@
 
 <AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ResultController">
    <children>
-      <AnchorPane id="resultanchor2" layoutX="64.0" layoutY="26.0" prefHeight="369.0" prefWidth="535.0">
+      <AnchorPane id="menuscheme1" layoutY="55.0" prefHeight="274.0" prefWidth="601.0" stylesheets="@application.css">
          <children>
-            <Button id="menubutton2" fx:id="nextLevelButton" layoutX="171.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeSceneToHard" prefHeight="44.0" prefWidth="108.0" text="Next Level" />
-            <Label layoutX="31.0" layoutY="114.0" text="Your Result:" textFill="#328a35">
+            <Button id="menuscheme2" fx:id="nextLevelButton" layoutX="233.0" layoutY="203.0" mnemonicParsing="false" onAction="#changeSceneToHard" prefHeight="44.0" prefWidth="121.0" text="Next Level">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Label layoutX="68.0" layoutY="77.0" text="Your Result:" textFill="#328a35">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="scoreLabel" layoutX="288.0" layoutY="123.0" prefHeight="30.0" prefWidth="189.0" text="/9" textFill="#4e832a">
+            <Label fx:id="scoreLabel" layoutX="315.0" layoutY="84.0" prefHeight="30.0" prefWidth="189.0" text="/9" textFill="#4e832a">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button id="quitbutton" layoutX="4.0" layoutY="349.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="37.0" prefWidth="81.0" text="Quit" textFill="WHITE" />
+      <Button id="quitbutton" layoutX="4.0" layoutY="349.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="37.0" prefWidth="81.0" stylesheets="@application.css" text="Quit" textFill="WHITE" />
    </children>
 </AnchorPane>

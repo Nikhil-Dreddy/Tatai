@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PracticeEquationsController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PracticeEquationsController">
    <children>
-      <Button id="menubutton2" layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#easyEq" prefHeight="26.0" prefWidth="137.0" text="Easy Equations" />
-      <Button id="menubutton" layoutX="12.0" layoutY="355.0" mnemonicParsing="false" onAction="#quit" text="Back">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <Button id="menubutton2" layoutX="218.0" layoutY="234.0" mnemonicParsing="false" onAction="#viewCustomEq" text="Custom Equations" />
-      <Button id="menubutton2" layoutX="218.0" layoutY="193.0" mnemonicParsing="false" onAction="#hardEq" prefHeight="26.0" prefWidth="137.0" text="Hard Equations" />
+      <AnchorPane id="menuscheme1" layoutX="113.0" layoutY="85.0" prefHeight="250.0" prefWidth="375.0" stylesheets="@application.css">
+         <children>
+            <Button id="menuscheme2" layoutX="120.0" layoutY="154.0" mnemonicParsing="false" onAction="#hardEq" prefHeight="26.0" prefWidth="137.0" text="Hard Equations" />
+            <Button id="menuscheme2" layoutX="120.0" layoutY="36.0" mnemonicParsing="false" onAction="#easyEq" prefHeight="26.0" prefWidth="137.0" text="Easy Equations" />
+            <Button id="menuscheme2" layoutX="120.0" layoutY="93.0" mnemonicParsing="false" onAction="#viewCustomEq" text="Custom Equations" />
+            <Button id="quitbutton" layoutX="10.0" layoutY="219.0" mnemonicParsing="false" onAction="#quit" prefHeight="26.0" prefWidth="62.0" text="Back" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

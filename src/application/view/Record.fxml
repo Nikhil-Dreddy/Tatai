@@ -4,42 +4,56 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.RecordController">
    <children>
-      <Label id="record" fx:id="numLabel" alignment="CENTER" layoutX="-5.0" layoutY="68.0" prefHeight="183.0" prefWidth="609.0" text="hi" textAlignment="CENTER" textFill="#462424">
-         <font>
-            <Font size="96.0" />
-         </font></Label>
-      <Button id="menubutton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeSceneToMenu" text="Quit">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
       <Label fx:id="questionLabel" layoutX="14.0" layoutY="14.0" text="  /10">
          <font>
             <Font size="17.0" />
          </font></Label>
-      <ProgressBar fx:id="pb" layoutX="103.0" layoutY="327.0" prefHeight="20.0" prefWidth="395.0" progress="0.0" />
-      <ButtonBar layoutX="69.0" layoutY="257.0" prefHeight="46.0" prefWidth="444.0">
-        <buttons>
-          <Button id="menubutton2" fx:id="listenButton" mnemonicParsing="false" onAction="#listenRecording" prefHeight="46.0" text="Listen">
+      <AnchorPane id="menuscheme1" layoutX="22.0" layoutY="60.0" prefHeight="306.0" prefWidth="570.0" stylesheets="@application.css">
+         <children>
+            <Label id="record" fx:id="numLabel" alignment="CENTER" layoutY="18.0" prefHeight="186.0" prefWidth="570.0" text="hi" textAlignment="CENTER" textFill="#bdc7c1">
                <font>
-                  <Font size="24.0" />
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <ButtonBar layoutX="51.0" layoutY="187.0" prefHeight="46.0" prefWidth="444.0">
+              <buttons>
+                <Button id="menuscheme2" fx:id="listenButton" mnemonicParsing="false" onAction="#listenRecording" prefHeight="46.0" text="Listen">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button id="menuscheme2" alignment="CENTER" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" stylesheets="@../application.css" text="Record">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button id="menuscheme2" fx:id="submitButton" mnemonicParsing="false" onAction="#submit" prefHeight="88.0" text="Submit">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+              </buttons>
+            </ButtonBar>
+            <ProgressBar fx:id="pb" layoutX="65.0" layoutY="240.0" prefHeight="20.0" prefWidth="432.0" progress="0.0" stylesheets="@application.css">
+               <effect>
+                  <DropShadow color="#d48872" />
+               </effect>
+            </ProgressBar>
+            <Button id="quitbutton" layoutX="12.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToMenu" prefHeight="29.0" prefWidth="70.0" text="Quit">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Button>
-            <Button id="menubutton2" alignment="CENTER" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" stylesheets="@../application.css" text="Record">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Button>
-            <Button id="menubutton2" fx:id="submitButton" mnemonicParsing="false" onAction="#submit" prefHeight="88.0" text="Submit">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-        </buttons>
-      </ButtonBar>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

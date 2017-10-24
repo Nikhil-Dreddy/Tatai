@@ -1,6 +1,6 @@
 
 #anchor {
-	-fx-background-image: url("background3.jpg");
+	-fx-background-image: url("background2.jpg");
 }
 
 #correctanchor {
@@ -24,7 +24,7 @@
 }
 
 #quitbutton {
-	-fx-background-color:#db2d20;
+	-fx-background-color:#D48872;
 }
 
 #menubutton {
@@ -48,4 +48,16 @@
 #sumbitbutton {
 	
 }
+#menuscheme1 {
+	-fx-background-color:#142634;
+}
+#menuscheme2{
+	-fx-background-color:#BDC7C1;
+}
+#menuscheme3{
+	-fx-background-color:#5A666B
+}
+
+
+
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
