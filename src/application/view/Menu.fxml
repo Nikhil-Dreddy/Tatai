@@ -15,12 +15,17 @@
       </Label>
       <AnchorPane id="menuscheme1" layoutX="125.0" layoutY="87.0" prefHeight="250.0" prefWidth="250.0" stylesheets="@application.css">
          <children>
-            <Button id="menuscheme2" layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#changeSceneToPracticeNumbers" prefHeight="25.0" prefWidth="175.0" text="Practice your numbers" textFill="#141313" />
-            <Button id="menuscheme2" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeSceneToPracticeEquations" prefHeight="25.0" prefWidth="175.0" text="Practice your equations" textFill="#2f0000" />
+            <Button id="menuscheme2" layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#changeSceneToPracticeNumbers" prefHeight="25.0" prefWidth="175.0" text="Numbers" textFill="#141313" />
+            <Button id="menuscheme2" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeSceneToPracticeEquations" prefHeight="25.0" prefWidth="175.0" text="Equations" />
             <Button id="menuscheme2" layoutX="100.0" layoutY="160.0" mnemonicParsing="false" onAction="#changeSceneToPracticeModule" prefHeight="25.0" prefWidth="175.0" text="Pratice Module" />
-            <Button id="menuscheme3" layoutX="134.0" layoutY="218.0" mnemonicParsing="false" onAction="#changeSceneToScore" prefHeight="25.0" prefWidth="100.0" text="Scores" />
+            <Button id="menuscheme2" layoutX="134.0" layoutY="218.0" mnemonicParsing="false" onAction="#changeSceneToScore" prefHeight="25.0" prefWidth="100.0" text="Scores" />
             <Button id="quitbutton" contentDisplay="CENTER" layoutX="275.0" layoutY="220.0" mnemonicParsing="false" onAction="#changeSceneToLogIn" prefHeight="25.0" prefWidth="100.0" text="Log Out" />
-           <Button id="menuscheme3" layoutX="6.0" layoutY="218.0" mnemonicParsing="false" onAction="#changeSceneToInstructions" prefHeight="25.0" prefWidth="100.0" text="Instructions" textFill="#1e0404" />
+           <Button id="menuscheme2" layoutX="6.0" layoutY="218.0" mnemonicParsing="false" onAction="#changeSceneToInstructions" prefHeight="25.0" prefWidth="100.0" text="Instructions" textFill="#0a0101" />
+            <Label layoutX="93.0" layoutY="14.0" prefHeight="21.0" prefWidth="194.0" text="Choose a Gamemode:" textFill="#bdc7c1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow />
