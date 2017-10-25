@@ -37,7 +37,10 @@ public class SpeechScript extends Task<Void> {
 	// records voice					
 
 
-	// converts audio to txt
+	/**
+	 * Records the user and passes on the recording to the Hvite which the converts the audio into the maori words spoken 
+	 * in text format.
+	 */
 	@Override
 	protected Void call() throws Exception {
 		ProcessBuilder pb = new ProcessBuilder("bash", "-c", "arecord -d 2 -r 22050 -c 1 -i -t wav -f s16_LE foo.wav")
@@ -109,6 +112,7 @@ public class SpeechScript extends Task<Void> {
 		event = event2;
 	}
 
+	
 	@Override 
 	protected void failed() {
 		super.failed();
@@ -116,7 +120,11 @@ public class SpeechScript extends Task<Void> {
 
 	}
 
-
+	/**
+	 * The following method reads the file which contains the output of the recording file after the recording
+	 * has been passed into Hvite
+	 * @throws IOException
+	 */
 	public void readAnswerFile() throws IOException {
 		FileReader fr = new FileReader("HTK/MaoriNumbers/recout.mlf");
 		BufferedReader br = new BufferedReader(fr);
@@ -135,9 +143,14 @@ public class SpeechScript extends Task<Void> {
 //		return words;
 	}
 	
+	/**
+	 * The following method use the aplay bash command to call the .wav file which contains 
+	 * the recording of the user.
+	 */
 	public void playRecording() {
 		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
 				.redirectErrorStream(true);
+		//change directory to the directory which contains the recording
 		pb3.directory(new File("HTK/MaoriNumbers"));
 		try {			
 			Process process = pb3.start();
@@ -158,6 +171,7 @@ public class SpeechScript extends Task<Void> {
 		}
 	}
 	
+	//Getter method for the words arraylist
 	public ArrayList<String> getWords(){
 		return words;
 	}
