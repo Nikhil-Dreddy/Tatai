@@ -83,6 +83,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 					WrongAgainController wac = new WrongAgainController();
 					wac.setMaxQ(equationList.size());
 					changeScene(event, "Record");
+				// if questionaire is empty
 				} else {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning Dialog");
@@ -176,7 +177,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 			} catch (ScriptException e) {}		
 			if (result == null || result.equals("Infinity")) {
 				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erroe");
+				alert.setTitle("Error");
 				alert.setHeaderText("Invalid Equation");
 				alert.setContentText("Please write a valid equation");
 				alert.showAndWait();
@@ -216,10 +217,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 
 		try {
 			Writer output;
-
 			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
-
-
 			if (item.getParent().equals(root)) {
 				output = new BufferedWriter(new FileWriter(customQFileName+item.getValue(), true));
 				createBranch(s, item, null);
