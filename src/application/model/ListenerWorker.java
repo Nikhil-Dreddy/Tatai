@@ -13,7 +13,6 @@ public class ListenerWorker extends Task<Void>  {
 
 	@Override
 	protected Void call() throws Exception {
-		System.out.println("eskit");
 		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
 				.redirectErrorStream(true);
 		pb3.directory(new File("HTK/MaoriNumbers"));

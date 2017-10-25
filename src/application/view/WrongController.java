@@ -20,6 +20,7 @@ public class WrongController extends AbstractController implements Initializable
 	@FXML
 	private Button Continue;
 	PraticeRecordController pratice = new PraticeRecordController();
+	
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
 		recordController.resetQno();

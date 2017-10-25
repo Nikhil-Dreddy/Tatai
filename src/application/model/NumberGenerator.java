@@ -18,6 +18,7 @@ public class NumberGenerator {
 		difficulty = Difficulty.HARD;
 	}
 	
+	// generates a random number based on the level the user chooses
 	public void generateNum(){
 		Random rand = new Random();
 		if (difficulty == Difficulty.EASY){
@@ -58,6 +59,7 @@ public class NumberGenerator {
 		return "";
 	}
 	
+	// Converts a int between 1-99 into a maori word
 	public String getMaoriNum(int i){
 		int secondDigit = i % 10;
 		int firstDigit = (i/10) % 10;
