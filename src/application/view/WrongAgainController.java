@@ -50,7 +50,7 @@ public class WrongAgainController extends AbstractController implements Initiali
 		}
 	}
 	
-	// for the next question botton
+	// for the next question button
 	public void changeSceneToRecord(ActionEvent event) throws IOException{
 		if(rC.getQno() == maxQ) {
 			changeScene(event,"Result");

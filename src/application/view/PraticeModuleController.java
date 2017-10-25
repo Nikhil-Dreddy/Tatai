@@ -24,9 +24,11 @@ public class PraticeModuleController extends AbstractController {
 		changeScene(event,"Menu");
 	}
 
+	//The following method changes to practice record scene 
 	public void changeSceneToPraticeRecord(ActionEvent event) throws IOException{
 		
 		try {
+			//it checks if the user has entered an int if hasn't the relevant alert pops-up
 			this.praticeNumber = Integer.parseInt(Number.getText());
 		}
 		catch(NumberFormatException a) {
@@ -43,6 +45,7 @@ public class PraticeModuleController extends AbstractController {
 				alert.close();
 			}
 		}
+		//if the number entered is less then 1 or greator then 99 the relevant pop-up is displayed
 		if((this.praticeNumber < 1 | this.praticeNumber > 99) & !this.numbererror) {
 			alert.setTitle("Error");
 			alert.setHeaderText("Wrong number");

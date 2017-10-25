@@ -11,10 +11,15 @@ import javafx.event.ActionEvent;
 
 public class ListenerWorker extends Task<Void>  {
 
+	/**
+	 * The following method use the aplay bash command to call the .wav file which contains 
+	 * the recording of the user.
+	 */
 	@Override
 	protected Void call() throws Exception {
 		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
 				.redirectErrorStream(true);
+		//change directory to the directory which contains the recording
 		pb3.directory(new File("HTK/MaoriNumbers"));
 		try {			
 			Process process = pb3.start();

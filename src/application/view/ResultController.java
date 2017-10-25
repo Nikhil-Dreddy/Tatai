@@ -50,6 +50,11 @@ public class ResultController extends AbstractController implements Initializabl
 		changeScene(event,"Record");
 	}
 
+	/**
+	 * The following method gets the overall score by the user and sets the result text-field to their 
+	 * answer and either enables or disables their button depending on how well they did.
+	 * @return
+	 */
 	public Label getScoreLabel() {
 		ScoreModel scores = new ScoreModel();
 		scores.addNewScore( recordController.getScore());
@@ -66,7 +71,11 @@ public class ResultController extends AbstractController implements Initializabl
 
 		return scoreLabel;
 	}
-
+	
+	/**
+	 * The following method saves the score and username of the curretn user into a text file 
+	 * for the next use.
+	 */
 	public void saveScore() {
 		File scores;
 		try {
@@ -82,6 +91,10 @@ public class ResultController extends AbstractController implements Initializabl
 		}
 	}
 	
+	/**
+	 * The following method reads the txt file and checks if the user has achieved a new personal or the high
+	 * score and creates a notification to show the user.
+	 */
 	public void motivation() {
 		ScoreModel model = new ScoreModel();
 		int max = 0;
@@ -100,16 +113,19 @@ public class ResultController extends AbstractController implements Initializabl
 
 		if(recordController.getScore() > max) {
 			if(recordController.getScore() > highscore) {
+				//If the user got the high score the notification informs the user of so
 				Notifications hard = Notifications.create().title("High score!!").text("Previous highscore was:" + highscore ).graphic(null).hideAfter(Duration.seconds(2))
 						.position(Pos.TOP_LEFT);
 				hard.showConfirm();
 			}
 			else if(recordController.getScore() > 7 && max < 7) {
+				//If the user got a new personal best and got over 7 it informs the user he unlocked hard mode
 				Notifications hard = Notifications.create().title("New Personal Best!").text("Your previous best was:" + max + " \\n You have unlocked hard mode!").graphic(null).hideAfter(Duration.seconds(2))
 						.position(Pos.TOP_LEFT);
 				hard.showConfirm();
 			}
 			else {
+				//If the user got a new personal best it informs so
 				Notifications B = Notifications.create().title("New Personal Best!").text("Your previous best was:" + max).graphic(null).hideAfter(Duration.seconds(2))
 						.position(Pos.TOP_LEFT);
 				B.showConfirm();
