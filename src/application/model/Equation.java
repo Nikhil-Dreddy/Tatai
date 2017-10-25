@@ -71,6 +71,7 @@ public class Equation {
 		}
 	}
 
+	// checks if the equation is a legitamate equation and returns a boolean
 	public boolean equationIsValid(String eq) {
 		Object result = null;
 		equation = new StringBuilder();
@@ -91,6 +92,8 @@ public class Equation {
 		}
 	}
 
+	// generate a string consisting of two numbers between 1-9
+	// with a random operand in between them
 	public String generateEasyEquation() {
 		equation = new StringBuilder();
 		int operator = (int) (Math.random() * 4) + 1;

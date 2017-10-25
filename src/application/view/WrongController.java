@@ -25,6 +25,7 @@ public class WrongController extends AbstractController implements Initializable
 	private Button Continue;
 	private Alert alert = new Alert(AlertType.WARNING);
 	PraticeRecordController pratice = new PraticeRecordController();
+	
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
 		//If at any moment the quit button is pressed the scores and questions are reset;

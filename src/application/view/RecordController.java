@@ -66,6 +66,7 @@ public class RecordController extends AbstractController implements Initializabl
 		status = s;
 	}
 
+	// Displays the number/equations for the user to analyze
 	public void setNumLabel(){
 		if (qType == QType.QUESTION) {
 			// if user is not on last try, then get random number
@@ -103,7 +104,6 @@ public class RecordController extends AbstractController implements Initializabl
 		new Thread(speech).start();	
 		updatePB();
 	}
-
 
 	public void makeButtonsVisible(){
 		listenButton.setDisable(false);
@@ -197,6 +197,7 @@ public class RecordController extends AbstractController implements Initializabl
 		setNumLabel();
 	}
 
+	// Makes the progress bar run for 2 seconds white the user records their voice
 	public void updatePB(){
 		new Thread(() -> {
 			for (int i=0; i<=100; i++){
