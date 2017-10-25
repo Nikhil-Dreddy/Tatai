@@ -27,7 +27,7 @@ import javafx.util.Duration;
 
 public class ResultController extends AbstractController implements Initializable{
 
-	private int score;
+//	private int score;
 	@FXML
 	private Label scoreLabel ;
 
@@ -53,8 +53,10 @@ public class ResultController extends AbstractController implements Initializabl
 	public Label getScoreLabel() {
 		ScoreModel scores = new ScoreModel();
 		scores.addNewScore( recordController.getScore());
-		score = recordController.getScore();
-		scoreLabel.setText(score + "/10");
+		
+		int score = recordController.getScore();
+		int questions = recordController.getQno();
+		scoreLabel.setText(score + "/"+questions);
 		if(score > 7) {
 			nextLevelButton.setDisable(false);
 		}
