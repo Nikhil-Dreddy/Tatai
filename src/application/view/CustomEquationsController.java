@@ -55,7 +55,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 		changeScene(event,"PracticeEquations");
 	}
 
-	// 
+	// allows user to select a questionaire from the listview and play
 	public void play(ActionEvent event) throws IOException{
 		equationList = new ArrayList<String>();
 
@@ -73,7 +73,8 @@ public class CustomEquationsController extends AbstractController implements Ini
 				String line = null;  
 				while ((line = br.readLine()) != null){  
 					equationList.add(line);
-				} 
+				}
+				// if questionaire contains at least one question
 				if (equationList.size() != 0) {
 					RecordController rc = new RecordController();
 					rc.setQTypeCustom();
@@ -103,10 +104,12 @@ public class CustomEquationsController extends AbstractController implements Ini
 		return equationList.get(rc.getQno());
 	}
 
+	// user chooses either questionaire or equation to delete
 	public void delete() {
 		try {
 			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
 			if(item != null) {
+				// if user chooses questionaire
 				if (item.getParent().equals(root)) {
 					Alert alert = new Alert(AlertType.CONFIRMATION);
 					alert.setTitle("Confirmation Dialog");
@@ -118,10 +121,8 @@ public class CustomEquationsController extends AbstractController implements Ini
 						file.delete();
 						boolean remove = item.getParent().getChildren().remove(item);
 					}
+				// if user chooses equation
 				} else {
-
-
-
 					File inputFile = new File(customQFileName+item.getParent().getValue());
 					File tempFile = new File(customQFileName+"temp");
 
@@ -151,6 +152,8 @@ public class CustomEquationsController extends AbstractController implements Ini
 		}
 	}
 
+	// reads the textfield where user enters an equation and saves it
+	// user must first choose which questionaire they want to add to
 	public void addEquation() {
 		Object result = null;
 		String newEq = addEqTextField.getText();
@@ -160,6 +163,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
 
+		// if user doesnt choose a questionaire
 		if (item == null) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning Dialog");
@@ -206,6 +210,8 @@ public class CustomEquationsController extends AbstractController implements Ini
 			}
 		}
 	}
+	
+	// helper method which appends equation to the saved file
 	public void saveEq(String s) {
 
 		try {
@@ -231,8 +237,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 
 	}
 
-
-
+	// checks in the treeView if a equation string exists
 	public boolean equationExists(String s) {
 		try {
 			BufferedReader reader;
@@ -263,9 +268,11 @@ public class CustomEquationsController extends AbstractController implements Ini
 
 	}
 
+	// reads the textfield for a new questionaire name 
 	public void createQuestionList() {
 		String qName = new String();
 		qName = qNameTextField.getText();
+		// check if questionaire name isnt taken or empty
 		if (qName.length() != 0) {
 			File f = new File("custom_questionaires/"+qName);
 			if(!f.exists()) { 
@@ -287,6 +294,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 		}
 	}
 
+	// sets up the treeview when custom equation scene is opened
 	public void 	initializeTreeView() {
 		root.setExpanded(true);
 
@@ -299,6 +307,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 		treeView.setShowRoot(false);
 	}
 
+	// helper method to create a new child for a given parent
 	public TreeItem<String> createBranch(String s, TreeItem<String> parent, String file){
 		TreeItem<String> item = new TreeItem<String>(s);
 		parent.getChildren().add(item);
