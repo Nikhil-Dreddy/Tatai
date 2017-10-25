@@ -2,14 +2,18 @@ package application.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.model.ListenerWorker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 
 public class WrongController extends AbstractController implements Initializable{
 
@@ -19,12 +23,25 @@ public class WrongController extends AbstractController implements Initializable
 	private Label wrongAns;
 	@FXML
 	private Button Continue;
+	private Alert alert = new Alert(AlertType.WARNING);
 	PraticeRecordController pratice = new PraticeRecordController();
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
-		recordController.resetQno();
-		recordController.resetScore();
-		changeScene(event,"Menu");
+		//If at any moment the quit button is pressed the scores and questions are reset;
+				alert.setTitle("Warning");
+				alert.setHeaderText("Quit?");
+				alert.setContentText("You will lose all progress if you quit");
+				ButtonType buttonYes = new ButtonType("Ok");
+				ButtonType buttonNo = new ButtonType("No");
+				alert.getButtonTypes().setAll(buttonYes,buttonNo);
+				Optional<ButtonType> result = alert.showAndWait();
+				if(result.get() == buttonYes) {
+					recordController.resetQno();
+					recordController.resetScore();
+					changeScene(event,"Menu");
+				} else {
+					alert.close();
+				}
 	}
 
 	// for the try again button

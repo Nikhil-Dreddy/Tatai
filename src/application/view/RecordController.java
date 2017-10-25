@@ -171,10 +171,21 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for the quit button
 	public void changeSceneToMenu(ActionEvent event) throws IOException{
-		this.resetQno();
-		this.resetScore();
-		changeScene(event,"Menu");
-		setStatus(Status.NEW_QUESTION);
+		alert.setTitle("Warning");
+		alert.setHeaderText("Quit?");
+		alert.setContentText("You will lose all progress if you quit");
+		ButtonType buttonYes = new ButtonType("Ok");
+		ButtonType buttonNo = new ButtonType("No");
+		alert.getButtonTypes().setAll(buttonYes,buttonNo);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == buttonYes) {
+			this.resetQno();
+			this.resetScore();
+			setStatus(Status.NEW_QUESTION);
+			changeScene(event,"Menu");
+		} else {
+			alert.close();
+		}
 	}
 
 	public String getWrongAns(){
