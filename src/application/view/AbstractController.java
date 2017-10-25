@@ -29,6 +29,12 @@ public abstract class AbstractController {
 		stage.setScene(menuViewScene);
 		stage.show();
 	}
+	
+/**
+ * The following method reads the scores.txt and stores the information of previous scores into the 
+ * score model so that it can be displayed in the score table,the method is only required to be called once
+ * per start-up of the application.
+ */
 	public void addPreviousScores() {
 	 ScoreModel model = new ScoreModel();
 		File score = new File("scores.txt");
