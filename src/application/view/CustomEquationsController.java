@@ -58,6 +58,7 @@ public class CustomEquationsController extends AbstractController implements Ini
 	// allows user to select a questionaire from the listview and play
 	public void play(ActionEvent event) throws IOException{
 		equationList = new ArrayList<String>();
+		ResultController.setCustom(true);
 
 		try {
 			TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();

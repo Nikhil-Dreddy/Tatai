@@ -27,10 +27,10 @@ import javafx.util.Duration;
 
 public class ResultController extends AbstractController implements Initializable{
 
-//	private int score;
+	//	private int score;
 	@FXML
 	private Label scoreLabel ;
-
+	private static boolean custom = false;
 	@FXML
 	private Button nextLevelButton = new Button();
 
@@ -57,8 +57,11 @@ public class ResultController extends AbstractController implements Initializabl
 	 */
 	public Label getScoreLabel() {
 		ScoreModel scores = new ScoreModel();
+		if(!ResultController.custom) {
 		scores.addNewScore( recordController.getScore());
-		
+		} else {
+			ResultController.setCustom(false);
+		}
 		int score = recordController.getScore();
 		int questions = recordController.getQno();
 		scoreLabel.setText(score + "/"+questions);
@@ -71,26 +74,32 @@ public class ResultController extends AbstractController implements Initializabl
 
 		return scoreLabel;
 	}
-	
+
 	/**
-	 * The following method saves the score and username of the curretn user into a text file 
+	 * The following method saves the score and username of the current user into a text file 
 	 * for the next use.
 	 */
 	public void saveScore() {
-		File scores;
-		try {
-			scores = new File("scores.txt");
-			BufferedWriter output;
-			output = new BufferedWriter(new FileWriter(scores, true));
-			output.newLine();
-			output.append(ScoreModel.username +" " +recordController.getScore());
-			output.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(!custom) {
+			File scores;
+			try {
+				scores = new File("scores.txt");
+				BufferedWriter output;
+				output = new BufferedWriter(new FileWriter(scores, true));
+				output.newLine();
+				output.append(ScoreModel.username +" " +recordController.getScore());
+				output.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			custom = false;
 		}
 	}
-	
+
 	/**
 	 * The following method reads the txt file and checks if the user has achieved a new personal or the high
 	 * score and creates a notification to show the user.
@@ -139,6 +148,14 @@ public class ResultController extends AbstractController implements Initializabl
 		motivation();
 		getScoreLabel();
 		saveScore();
+	}
+
+	public static boolean isCustom() {
+		return custom;
+	}
+
+	public static void setCustom(boolean custom) {
+		ResultController.custom = custom;
 	}
 
 

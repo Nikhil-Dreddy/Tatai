@@ -13,7 +13,6 @@ import javax.script.ScriptException;
 import application.model.Equation;
 import application.model.ListenerWorker;
 import application.model.NumberGenerator;
-import application.model.ScoreModel;
 import application.model.SpeechScript;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
