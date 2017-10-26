@@ -30,6 +30,9 @@ import javafx.scene.text.Font;
 
 public class RecordController extends AbstractController implements Initializable{
 
+	
+	@FXML 
+	private Button record = new Button();
 	private enum Status{
 		NEW_QUESTION, NO_ANS, WRONG_ANS
 	}
@@ -89,7 +92,7 @@ public class RecordController extends AbstractController implements Initializabl
 		} else if (qType == QType.CUSTOM) {
 			CustomEquationsController custEqCont = new CustomEquationsController();
 			numLabel.setText(custEqCont.getEquation());
-			numLabel.setFont(new Font(100));
+			numLabel.setFont(new Font(45));
 		}
 		speech = new SpeechScript(this);
 		questionLabel.setText(score+"/"+questionNo);	
@@ -104,6 +107,9 @@ public class RecordController extends AbstractController implements Initializabl
 	// this button gets answer and saves it
 	// pretty much same functionality as real record
 	public void record(ActionEvent event) throws IOException{
+		this.makeButtonsDisible();
+		speech = new SpeechScript(this);
+		record.setDisable(true);
 		speech.setEvent(event);
 		new Thread(speech).start();	
 		updatePB();
@@ -112,13 +118,19 @@ public class RecordController extends AbstractController implements Initializabl
 	public void makeButtonsVisible(){
 		listenButton.setDisable(false);
 		submitButton.setDisable(false);
+		record.setDisable(false);
+	}
+	
+	public void makeButtonsDisible(){
+		listenButton.setDisable(true);
+		submitButton.setDisable(true);
+		record.setDisable(true);
 	}
 
 	// when submit button is pressed
 	public void submit(ActionEvent event) throws IOException{
 		speech.readAnswerFile();
 		words = speech.getWords();
-
 		if(words.isEmpty()){
 			setStatus(Status.NO_ANS);
 			userAns = "";
@@ -235,6 +247,7 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for listen button
 	public void listenRecording(ActionEvent event) throws IOException{
+		worker = new ListenerWorker();
 		new Thread(worker).start();
 	}
 

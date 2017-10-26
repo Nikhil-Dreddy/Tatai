@@ -41,7 +41,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button id="menuscheme2" alignment="CENTER" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" stylesheets="@../application.css" text="Record">
+                  <Button id="menuscheme2" fx:id="record" alignment="CENTER" mnemonicParsing="false" onAction="#record" prefHeight="64.0" prefWidth="270.0" stylesheets="@../application.css" text="Record">
                      <font>
                         <Font size="23.0" />
                      </font>
