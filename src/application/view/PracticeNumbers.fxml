@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PracticeNumbersController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PracticeNumbersController">
    <children>
       <AnchorPane id="menuscheme1" layoutX="113.0" layoutY="87.0" prefHeight="250.0" prefWidth="375.0" stylesheets="@application.css">
          <children>
@@ -27,5 +28,10 @@
             <DropShadow />
          </effect>
       </AnchorPane>
+      <Label layoutX="195.0" layoutY="14.0" text="Numbers">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
