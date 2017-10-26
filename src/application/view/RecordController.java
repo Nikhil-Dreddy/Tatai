@@ -109,7 +109,6 @@ public class RecordController extends AbstractController implements Initializabl
 	public void record(ActionEvent event) throws IOException{
 		this.makeButtonsDisible();
 		speech = new SpeechScript(this);
-		record.setDisable(true);
 		speech.setEvent(event);
 		new Thread(speech).start();	
 		updatePB();
@@ -247,8 +246,12 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for listen button
 	public void listenRecording(ActionEvent event) throws IOException{
+		this.makeButtonsDisible();
+		updatePB();
 		worker = new ListenerWorker();
 		new Thread(worker).start();
+		this.makeButtonsVisible();
+
 	}
 
 	public int getQno() {
