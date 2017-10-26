@@ -328,6 +328,9 @@ public class CustomEquationsController extends AbstractController implements Ini
 		return item;
 	}
 
+	public void help(ActionEvent event) throws IOException{
+		changeScene(event,"CustomEqHelp");
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		initializeTreeView();
