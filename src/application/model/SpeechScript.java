@@ -33,10 +33,6 @@ public class SpeechScript extends Task<Void> {
 		praticeController = rC;
 	}
 
-
-	// records voice					
-
-
 	/**
 	 * Records the user and passes on the recording to the Hvite which the converts the audio into the maori words spoken 
 	 * in text format.
