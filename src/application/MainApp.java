@@ -31,12 +31,6 @@ public class MainApp extends Application {
 	}
 
 	public static void main(String[] args){
-		File file = new File("custom_equations.txt");
-		try {
-			file.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
 		new File("custom_questionaires").mkdir();
 		File yourFile = new File("scores.txt");
 		try {

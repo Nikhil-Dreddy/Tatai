@@ -7,19 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CustomEquationsController">
+<AnchorPane id="anchor" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.CustomEquationsController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="267.0" text="Custom Questionaires">
+      <Label layoutX="135.0" layoutY="14.0" text="Custom Questionnaires">
          <font>
-            <Font name="Ubuntu Condensed" size="26.0" />
+            <Font size="30.0" />
          </font></Label>
       <Button id="quitbutton" layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Back" />
-      <Button id="menuscheme2" layoutX="374.0" layoutY="129.0" mnemonicParsing="false" onAction="#delete" stylesheets="@application.css" text="Delete" />
-      <Button id="menuscheme2" layoutX="372.0" layoutY="166.0" mnemonicParsing="false" onAction="#createQuestionList" stylesheets="@application.css" text="Make QuestionList" />
-      <TextField id="menubutton" fx:id="qNameTextField" layoutX="371.0" layoutY="199.0" promptText="Questionarie" stylesheets="@application.css" />
-      <Button id="menuscheme2" layoutX="285.0" layoutY="320.0" mnemonicParsing="false" onAction="#addEquation" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Add" />
-      <TextField id="menubutton" fx:id="addEqTextField" layoutX="100.0" layoutY="319.0" promptText="Equation" stylesheets="@application.css" />
-      <TreeView fx:id="treeView" layoutX="20.0" layoutY="59.0" prefHeight="254.0" prefWidth="347.0" stylesheets="@application.css" />
-      <Button id="menuscheme2" layoutX="373.0" layoutY="95.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Play" />
+      <AnchorPane id="menuscheme1" layoutX="58.0" layoutY="52.0" prefHeight="297.0" prefWidth="485.0" stylesheets="@application.css">
+         <children>
+            <TextField id="menubutton" fx:id="qNameTextField" layoutX="170.0" layoutY="14.0" prefHeight="27.0" prefWidth="158.0" promptText="Questionarie" stylesheets="@application.css" />
+            <Button id="menuscheme2" layoutX="326.0" layoutY="14.0" mnemonicParsing="false" onAction="#createQuestionList" stylesheets="@application.css" text="Make Questionnaire" />
+            <TreeView fx:id="treeView" layoutX="28.0" layoutY="49.0" prefHeight="195.0" prefWidth="430.0" stylesheets="@application.css" />
+            <TextField id="menubutton" fx:id="addEqTextField" layoutX="177.0" layoutY="252.0" prefHeight="27.0" prefWidth="183.0" promptText="Equation" stylesheets="@application.css" />
+            <Button id="menuscheme2" layoutX="360.0" layoutY="252.0" mnemonicParsing="false" onAction="#addEquation" prefHeight="27.0" prefWidth="102.0" stylesheets="@application.css" text="Add Equation" />
+            <Button id="menuscheme2" layoutX="99.0" layoutY="252.0" mnemonicParsing="false" onAction="#delete" stylesheets="@application.css" text="Delete" />
+            <Button id="menuscheme2" layoutX="28.0" layoutY="252.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Play" />
+         </children>
+      </AnchorPane>
+      <Button id="quitbutton" layoutX="525.0" layoutY="359.0" mnemonicParsing="false" onAction="#help" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Help" />
    </children>
 </AnchorPane>

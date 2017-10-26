@@ -15,7 +15,7 @@
                   <Font size="31.0" />
                </font>
             </Text>
-            <Button id="quitbutton" layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#changeSceneToMenu" stylesheets="@application.css" text="Quit">
+            <Button id="quitbutton" layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#changeSceneToMenu" stylesheets="@application.css" text="Back">
                <font>
                   <Font size="18.0" />
                </font></Button>
