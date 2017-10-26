@@ -16,11 +16,11 @@
       <Button id="quitbutton" layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Back" />
       <AnchorPane id="menuscheme1" layoutX="58.0" layoutY="52.0" prefHeight="297.0" prefWidth="485.0" stylesheets="@application.css">
          <children>
-            <TextField id="menubutton" fx:id="qNameTextField" layoutX="170.0" layoutY="14.0" prefHeight="27.0" prefWidth="158.0" promptText="Questionarie" stylesheets="@application.css" />
+            <TextField id="menubutton" fx:id="qNameTextField" layoutX="173.0" layoutY="14.0" prefHeight="27.0" prefWidth="141.0" promptText="Questionarie" stylesheets="@application.css" />
             <Button id="menuscheme2" layoutX="326.0" layoutY="14.0" mnemonicParsing="false" onAction="#createQuestionList" stylesheets="@application.css" text="Make Questionnaire" />
             <TreeView fx:id="treeView" layoutX="28.0" layoutY="49.0" prefHeight="195.0" prefWidth="430.0" stylesheets="@application.css" />
-            <TextField id="menubutton" fx:id="addEqTextField" layoutX="177.0" layoutY="252.0" prefHeight="27.0" prefWidth="183.0" promptText="Equation" stylesheets="@application.css" />
-            <Button id="menuscheme2" layoutX="360.0" layoutY="252.0" mnemonicParsing="false" onAction="#addEquation" prefHeight="27.0" prefWidth="102.0" stylesheets="@application.css" text="Add Equation" />
+            <TextField id="menubutton" fx:id="addEqTextField" layoutX="195.0" layoutY="252.0" prefHeight="27.0" prefWidth="158.0" promptText="Equation" stylesheets="@application.css" />
+            <Button id="menuscheme2" layoutX="360.0" layoutY="252.0" mnemonicParsing="false" onAction="#addEquation" stylesheets="@application.css" text="Add Equation" />
             <Button id="menuscheme2" layoutX="99.0" layoutY="252.0" mnemonicParsing="false" onAction="#delete" stylesheets="@application.css" text="Delete" />
             <Button id="menuscheme2" layoutX="28.0" layoutY="252.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="61.0" stylesheets="@application.css" text="Play" />
          </children>
