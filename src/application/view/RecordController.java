@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import application.model.Equation;
 import application.model.ListenerWorker;
 import application.model.NumberGenerator;
@@ -85,7 +89,7 @@ public class RecordController extends AbstractController implements Initializabl
 		} else if (qType == QType.CUSTOM) {
 			CustomEquationsController custEqCont = new CustomEquationsController();
 			numLabel.setText(custEqCont.getEquation());
-			numLabel.setFont(new Font(30));
+			numLabel.setFont(new Font(100));
 		}
 		speech = new SpeechScript(this);
 		questionLabel.setText(score+"/"+questionNo);	
@@ -141,6 +145,17 @@ public class RecordController extends AbstractController implements Initializabl
 				maoriWord = numberGenerator.getMaoriNum(numberGenerator.getNum());
 			} else if (qType == QType.EQUATION) {
 				maoriWord = numberGenerator.getMaoriNum(equation.getAns());
+			} else if (qType == QType.CUSTOM) {
+				Object result = null;
+				ScriptEngineManager manager = new ScriptEngineManager();
+				ScriptEngine engine = manager.getEngineByName("js");
+				CustomEquationsController custEqCont = new CustomEquationsController();
+				try {
+					maoriWord = numberGenerator.getMaoriNum((Integer) engine.eval(custEqCont.getEquation().replace("x", "*")));
+				} catch (ScriptException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			// user is correct

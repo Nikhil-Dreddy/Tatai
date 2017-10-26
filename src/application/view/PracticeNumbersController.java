@@ -32,6 +32,9 @@ public class PracticeNumbersController extends AbstractController{
 		changeScene(event,"Record");
 	}
 	
+	public void changeSceneToPracticeModule(ActionEvent event) throws IOException{
+		changeScene(event,"PraticeModule");
+	}
 	
 	public void changeSceneToUsername(ActionEvent event) throws IOException{
 		changeScene(event,"Record");

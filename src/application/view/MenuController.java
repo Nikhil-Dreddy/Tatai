@@ -39,9 +39,9 @@ public class MenuController extends AbstractController implements Initializable 
 		changeScene(event,"PracticeNumbers");
 	}
 	
-	public void changeSceneToPracticeModule(ActionEvent event) throws IOException{
-		changeScene(event,"PraticeModule");
-	}
+//	public void changeSceneToPracticeModule(ActionEvent event) throws IOException{
+//		changeScene(event,"PraticeModule");
+//	}
 	
 	public void changeSceneToPracticeEquations(ActionEvent event) throws IOException{
 		changeScene(event,"PracticeEquations");
