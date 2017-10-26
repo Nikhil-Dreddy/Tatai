@@ -33,11 +33,12 @@ public class RecordController extends AbstractController implements Initializabl
 	private enum Status{
 		NEW_QUESTION, NO_ANS, WRONG_ANS
 	}
-	
+
 	private enum QType{
 		QUESTION, EQUATION, CUSTOM
 	}
-
+	@FXML 
+	private Button record = new Button();
 	ListenerWorker worker = new ListenerWorker(this);
 	NumberGenerator numberGenerator = new NumberGenerator();
 	Equation equation = new Equation();
@@ -104,14 +105,22 @@ public class RecordController extends AbstractController implements Initializabl
 	// this button gets answer and saves it
 	// pretty much same functionality as real record
 	public void record(ActionEvent event) throws IOException{
+		this.makeButtonsDisible();
+		speech = new SpeechScript(this);
 		speech.setEvent(event);
 		new Thread(speech).start();	
 		updatePB();
 	}
 
+	public void makeButtonsDisible(){
+		listenButton.setDisable(true);
+		submitButton.setDisable(true);
+		record.setDisable(true);
+	}
 	public void makeButtonsVisible(){
 		listenButton.setDisable(false);
 		submitButton.setDisable(false);
+		record.setDisable(false);
 	}
 
 	// when submit button is pressed
@@ -234,7 +243,7 @@ public class RecordController extends AbstractController implements Initializabl
 
 	// for listen button
 	public void listenRecording(ActionEvent event) throws IOException{
-		this.makeButtonsVisible();
+		this.makeButtonsDisible();
 		updatePB();
 		worker = new ListenerWorker(this);
 		new Thread(worker).start();
@@ -253,11 +262,11 @@ public class RecordController extends AbstractController implements Initializabl
 	public void setQTypeQuestion() {
 		qType = QType.QUESTION;
 	}
-	
+
 	public void setQTypeEquation() {
 		qType = QType.EQUATION;
 	}
-	
+
 	public void setQTypeCustom() {
 		qType = QType.CUSTOM;
 	}

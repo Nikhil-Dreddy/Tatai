@@ -56,6 +56,9 @@ public class ListenerWorker extends Task<Void>  {
 		if(a != null ) {
 			a.makeButtonsVisible();
 		}
+		if(b != null) {
+			b.makeButtonsVisible();
+		}
 		super.succeeded();
 		updateMessage("Success!");
 	}

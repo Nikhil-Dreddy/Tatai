@@ -33,7 +33,8 @@ public class PraticeRecordController extends AbstractController implements Initi
 	private enum QType{
 		QUESTION, EQUATION
 	}
-
+	@FXML 
+	private Button record = new Button();
 	ListenerWorker worker = new ListenerWorker(this);
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
@@ -75,15 +76,23 @@ public class PraticeRecordController extends AbstractController implements Initi
 	// this button gets answer and saves it
 	// pretty much same functionality as real record
 	public void record(ActionEvent event) throws IOException{
+		speech = new SpeechScript(this);
+		this.makeButtonsDisible();
 		speech.setEvent(event);
 		new Thread(speech).start();	
 		updatePB();
 	}
 
 
+	public void makeButtonsDisible(){
+		listenButton.setDisable(true);
+		submitButton.setDisable(true);
+		record.setDisable(true);
+	}
 	public void makeButtonsVisible(){
 		listenButton.setDisable(false);
 		submitButton.setDisable(false);
+		record.setDisable(false);
 	}
 
 	// when submit button is pressed
@@ -91,21 +100,8 @@ public class PraticeRecordController extends AbstractController implements Initi
 		speech.readAnswerFile();
 		words = speech.getWords();
 		if(words.isEmpty()){
-			setStatus(Status.NO_ANS);
-			userAns = "";
-			//If nothing was said a pop-up comes tell the user to re-record
-			alert.setTitle("Error");
-			alert.setHeaderText("No Word?");
-			alert.setContentText("No word was said,press Ok to Re-record");
-			ButtonType buttonYes = new ButtonType("Ok");
-			alert.getButtonTypes().setAll(buttonYes);
-			speech = new SpeechScript(this);
-			Optional<ButtonType> result = alert.showAndWait();
-			if(result.get() == buttonYes) {
-				changeScene(event,"Record");
-			} else {
-				alert.close();
-			}
+			this.praticeMode = true;
+			changeScene(event, "Wrong");
 		} else {
 			/* 
 			 * if words is not empty
@@ -164,6 +160,8 @@ public class PraticeRecordController extends AbstractController implements Initi
 
 	// for listen button
 	public void listenRecording(ActionEvent event) throws IOException{
+		this.makeButtonsDisible();
+		worker = new ListenerWorker(this);
 		new Thread(worker).start();
 	}
 
