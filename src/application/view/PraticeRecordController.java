@@ -34,7 +34,7 @@ public class PraticeRecordController extends AbstractController implements Initi
 		QUESTION, EQUATION
 	}
 
-	ListenerWorker worker = new ListenerWorker();
+	ListenerWorker worker = new ListenerWorker(this);
 	private static String userAns;
 	private  ArrayList<String> words = new ArrayList<String>();
 

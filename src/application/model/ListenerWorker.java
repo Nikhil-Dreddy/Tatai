@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import application.view.PraticeRecordController;
+import application.view.RecordController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 
@@ -15,6 +17,17 @@ public class ListenerWorker extends Task<Void>  {
 	 * The following method use the aplay bash command to call the .wav file which contains 
 	 * the recording of the user.
 	 */
+	private RecordController a;
+	private PraticeRecordController b;
+	public ListenerWorker(RecordController c) {
+		this.a= c;
+	}
+	public ListenerWorker(PraticeRecordController praticeRecordController) {
+		b = praticeRecordController;
+	}
+	public ListenerWorker() {
+		
+	}
 	@Override
 	protected Void call() throws Exception {
 		ProcessBuilder pb3 = new ProcessBuilder("bash", "-c", "aplay foo.wav")
@@ -40,6 +53,9 @@ public class ListenerWorker extends Task<Void>  {
 	
 	@Override
 	protected void succeeded() {
+		if(a != null ) {
+			a.makeButtonsVisible();
+		}
 		super.succeeded();
 		updateMessage("Success!");
 	}
