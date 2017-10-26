@@ -41,7 +41,7 @@ public class RecordController extends AbstractController implements Initializabl
 		QUESTION, EQUATION, CUSTOM
 	}
 
-	ListenerWorker worker = new ListenerWorker();
+	ListenerWorker worker = new ListenerWorker(this);
 	NumberGenerator numberGenerator = new NumberGenerator();
 	Equation equation = new Equation();
 
@@ -248,10 +248,8 @@ public class RecordController extends AbstractController implements Initializabl
 	public void listenRecording(ActionEvent event) throws IOException{
 		this.makeButtonsDisible();
 		updatePB();
-		worker = new ListenerWorker();
+		worker = new ListenerWorker(this);
 		new Thread(worker).start();
-		this.makeButtonsVisible();
-
 	}
 
 	public int getQno() {

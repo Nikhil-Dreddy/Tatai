@@ -66,6 +66,8 @@ public class NumberGenerator {
 		
 		if (firstDigit == 0){
 			return digitToMaori(secondDigit);
+		} else if (i == 10) {
+			return "tekau";
 		} else if (firstDigit == 1){
 			return "tekau maa "+digitToMaori(secondDigit);
 		} else if(secondDigit == 0){

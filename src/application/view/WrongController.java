@@ -57,6 +57,7 @@ public class WrongController extends AbstractController implements Initializable
 	}
 
 	public void listenRecording(ActionEvent event) throws IOException{
+		worker = new ListenerWorker();
 		new Thread(worker).start();
 	}
 
