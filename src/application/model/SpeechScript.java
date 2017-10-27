@@ -39,7 +39,6 @@ public class SpeechScript extends Task<Void> {
 	 */
 	@Override
 	protected Void call() throws Exception {
-		System.out.println("ESKIT!");
 		ProcessBuilder pb = new ProcessBuilder("bash", "-c", "arecord -d 2 -r 22050 -c 1 -i -t wav -f s16_LE foo.wav")
 				.redirectErrorStream(true);
 		pb.directory(new File("HTK/MaoriNumbers"));
